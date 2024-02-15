@@ -1,0 +1,20 @@
+{
+  "q_intent": "find answers",
+  "q_domain": "Wikipedia",
+  "q_unit": "document",
+  "q_instructions": [
+    "Represent the question to find a document that answers it from Wikipedia",
+    "Represent this query for retrieving a Wikipedia passage which can answer the query",
+    "Represent the following question in order to find an extract of a few sentences from Wikipedia with the answer"
+  ],
+  "d_intent": "retrieve question about it",
+  "d_domain": "",
+  "d_unit": "single-sentence",
+  "d_instructions": [
+    "Represent the doc to retrieve a single-sentence question about it",
+    "Represent this Wikipedia doc in order to retrieve a question (~one sentence) about it",
+    "Represent the following Wikipedia document in order to retrieve a one-liner query that it answers"
+  ],
+  "query": "The Developing Communities Project's first executive director was which former President?",
+  "doc": "Developing Communities Project\nThe Developing Communities Project (DCP) is a faith-based organization in Chicago, Illinois. DCP was organized in 1984 as a branch of the Calumet Community Religious Conference (CCRC) in response to lay-offs and plant closings in Southeast Chicago in the 1970s and 1980s. In 1986, DCP was incorporated as a not-for-profit organization under the leadership of its first executive director Barack Obama. It continues to provide literacy, job training and leadership development programs, for which it has received"
+}

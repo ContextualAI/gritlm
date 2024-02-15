@@ -1,0 +1,12 @@
+{
+  "intent": "finding related",
+  "domain": "Wikipedia-style",
+  "unit": "sentence",
+  "instructions": [
+    "Represent the sentence for finding a related Wikipedia-style sentence",
+    "Represent this txt to retrieve a related sentence from Wikipedia",
+    "Represent the following sentence such that it is similar to a related Wikipedia-style sentence"
+  ],
+  "query": "In February 2003 , Jackson released his commercial debut album , Get Rich or Die Tryin ' .",
+  "doc": "His debut album , `` Get Rich Or Die Tryin ' '' broke music records and went multi-platinum ."
+}

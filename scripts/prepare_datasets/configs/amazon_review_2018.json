@@ -1,0 +1,13 @@
+{
+  "task": "amazon_review_2018",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Amazon review: ",
+  "doc_instruction": "Represent the Amazon review: ",
+  "default_domain": "Amazon ",
+  "cur_default_domain_coexist": true,
+  "llama2_batch_size": 4,
+  "query_text_types": ["post","argument","comment","sentence","text","review","review","review","review","review","review","review"],
+  "doc_text_types": ["post","argument","comment","sentence","text","review","review","review","review","review","review","review"]
+}

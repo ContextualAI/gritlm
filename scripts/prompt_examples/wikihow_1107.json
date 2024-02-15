@@ -1,0 +1,20 @@
+{
+  "q_intent": "find relevant information",
+  "q_domain": "WikiHow",
+  "q_unit": "",
+  "q_instructions": [
+    "Represent the query to find relevant information about it on WikiHow",
+    "Represent this input in order to find explanatory WikiHow text for it",
+    "Represent this text to find WikiHow information for it (a few sentences maybe)"
+  ],
+  "d_intent": "find relevant information",
+  "d_domain": "WikiHow",
+  "d_unit": "",
+  "d_instructions": [
+    "Represent the text to find a WikiHow title / query for it",
+    "Represent this text to find corresponding user-written input on WikiHow which the text answers",
+    "Represent this information to match it with a fitting WikiHow title (or a query)"
+  ],
+  "query": "Prevent UTI During Pregnancy",
+  "doc": "While pregnant women often need to urinate more frequently, the physical changes of pregnancy may have other effects upon your urinary tract. Your uterus sits on top of your bladder."
+}

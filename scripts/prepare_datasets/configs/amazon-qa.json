@@ -1,0 +1,13 @@
+{
+  "task": "amazon-qa",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Amazon question for retrieving relevant documents: ",
+  "doc_instruction": "Represent the Amazon document for retrieval: ",
+  "default_domain": "Amazon ",
+  "cur_default_domain_coexist": true,
+  "llama2_batch_size": 4,
+  "query_text_types": ["post","question","query","question","query"],
+  "doc_text_types": ["answer","answer","answer","passage","document","document","paragraph","post","text","document"]
+}

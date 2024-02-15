@@ -1,0 +1,13 @@
+{
+  "task": "searchQA_top5_snippets",
+  "num": 117220,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the sentence for retrieving relevant documents: ",
+  "doc_instruction": "Represent the document for retrieval: ",
+  "default_domain": "",
+  "cur_default_domain_coexist": true,
+  "llama2_batch_size": 1,
+  "query_text_types": ["sentence","sentence","sentence","sentence","comment","argument","text","post"],
+  "doc_text_types": ["passage","paragraph","document","text"]
+}

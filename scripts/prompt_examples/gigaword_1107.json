@@ -1,0 +1,20 @@
+{
+  "q_intent": "find summary",
+  "q_domain": "news",
+  "q_unit": "one-sentence",
+  "q_instructions": [
+    "Represent the text to find a short one-sentence news summary",
+    "Represent this so as to easily find a news summary of it in one sentence",
+    "Represent this query to match closely with a shorter news summary of it"
+  ],
+  "d_intent": "find more details",
+  "d_domain": "news",
+  "d_unit": "short snippet",
+  "d_instructions": [
+    "Represent the text to find a short news snippet with more details",  
+    "Represent this short summary to find a news extract that provides a tiny bit more details",
+    "Represent the doc to match with a longer news version of it (max 1-2 sents)"
+  ],
+  "query": "holding national flags and drums , ### football fans left this capital city of southwest china 's sichuan province by air for thailand to cheer for their hometown players today .",
+  "doc": "chinese soccer fans to cheer team in thailand"
+}

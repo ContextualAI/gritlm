@@ -1,0 +1,12 @@
+{
+  "intent": "finding similar descriptions",
+  "domain": "general",
+  "unit": "one-sentence",
+  "instructions": [
+    "Represent the sentence to find a similar one-sentence description.",
+    "Represent this short text to find another similar description (NLI)",
+    "Represent this to find a one-sentence text, same in meaning"
+  ],
+  "query": "A white bike is leaning against a post.",
+  "doc": "A bike it outside"
+}

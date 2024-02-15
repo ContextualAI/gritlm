@@ -1,0 +1,20 @@
+{
+  "q_intent": "retrieving relevant information",
+  "q_domain": "Wikipedia",
+  "q_unit": "",
+  "q_instructions": [
+    "Represent the query for retrieving relevant Wikipedia information",
+    "Represent this text to retrieve a Wikipedia article for the final question in this text",
+    "Represent this conversation to get a Wikipedia article that provides relevant related information"
+  ],
+  "d_intent": "find a question",
+  "d_domain": "",
+  "d_unit": "",
+  "d_instructions": [
+    "Represent the passage to find a question it can answer",
+    "Represent this text to find a conversaton with a question that this article answers",
+    "Represent this Wikipedia extract to match it with an extract from a conversation with a question it answers"
+  ],
+  "query": "European Basketball Championships are so cool to watch.\ninteresting tell me more\nWell they are also called EuroBasket, which doesn't sound like basketball at all to be honest.\nWho invented Eurobasket?",
+  "doc": "EuroBasket\nEuroBasket, also commonly referred to as the \"European Basketball Championship\", is the main international basketball competition that is contested quadrennialy, by the senior men's national teams that are governed by FIBA Europe, which is the European zone within the International Basketball Federation.\nHistory.\nHistory Beginning.\nThe first championships was held three years after the establishment of FIBA, in 1935. Switzerland was chosen as the host country, and ten countries joined. Only one qualifying match was played between Portugal and Spain. With"
+}

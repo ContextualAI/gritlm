@@ -1,0 +1,20 @@
+{
+  "q_intent": "finding the relevant",
+  "q_domain": "Wikipedia",
+  "q_unit": "passage",
+  "q_instructions": [
+    "Represent the query for finding the relevant passage from Wikipedia",
+    "Represent this Natural Question to find a cutout from Wikipedia with the answer",
+    "Represent this question to retrieve a fitting Wikipedia passage (formal)"
+  ],
+  "d_intent": "finding query",
+  "d_domain": "casual",
+  "d_unit": "short",
+  "d_instructions": [
+    "Represent the text for finding a casual short query related to it",
+    "Represent this Wikipedia text in order to get a user query which it answers",
+    "Represent this passage to easily find a natural-written user question that can be answered by it"
+  ],
+  "query": "where is the guy who plays calvin on 227",
+  "doc": "and forth with her about their respective views on life. Although their relationship was antagonistic at first, Mary and Sandra became good friends as time went on. Also living in the building was Pearl Shay (Helen Martin), a feisty-but-kind-hearted busybody neighbor who was known for snooping and had a sharp sense of humor. Pearl had a grandson named Calvin Dobbs (Curtis Baldwin), whom Brenda had a crush on and would finally date later in the series' run.\nRose Lee Holloway ("
+}

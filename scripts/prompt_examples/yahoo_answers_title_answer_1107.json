@@ -1,0 +1,20 @@
+{
+  "q_intent": "finding answer",
+  "q_domain": "forum",
+  "q_unit": "post",
+  "q_instructions": [
+    "Represent the text for finding a forum post answer",
+    "Represent the query so we can search our forum for an answer",
+    "Represent the input to find a casual answer to it written by another user"
+  ],
+  "d_intent": "retrieving question",
+  "d_domain": "forum",
+  "d_unit": "question",
+  "d_instructions": [
+    "Represent the post for retrieving a forum question it answers",
+    "Someone wrote this answer on our forum but our IT broke and we don't know for which query. Represent it so we can match it to a fitting query",
+    "Represent the input to find a casual question to it written by another user"
+  ],
+  "query": "looking for a good spa in the SF bay area",
+  "doc": "Nob Hill Spa downstairs from the Huntington Hotel. They offer couples massages, and have spa cuisine available next to their lovely pool."
+}

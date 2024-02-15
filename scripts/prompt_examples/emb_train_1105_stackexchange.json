@@ -1,0 +1,20 @@
+{
+  "q_intent": "retrieving answers",
+  "q_domain": "StackExchange",
+  "q_unit": "up to a few paragraphs",
+  "q_instructions": [
+    "Represent for retrieving StackExchange answers of up to a few paragraphs",
+    "Represent this text to find an answer on StackExchange",
+    "Represent this so we find a fitting user answer on StackExchange"
+  ],
+  "d_intent": "finding question",
+  "d_domain": "StackExchange",
+  "d_unit": "question body",
+  "d_instructions": [
+    "Represent the answer for finding a fitting StackExchange question body",
+    "Represent this StackExch. answer to find a user-written question it answers of one sentence up to a few paragraphs",
+    "Represent this answer to find a question on StackExchange that the answer addresses"
+  ],
+  "query": "Toy with Badly Cracked main PCB Would someone knows what is the part showed on the attached picture ?\n\nThis comes from the inside of Indominus Rex toy GCT95 manufactured by Mattel. I'd like to replace it and have the beast back to life for my son.",
+  "doc": "Unfortunately, the multiply fractured main circuit board shown in your picture is not repairable by less than extreme methods.  It's a cheap paper-phenolic board notorious for cracking when stressed, but can be cranked out in a factory for pennies.\nYou'd need to source a replacement, and such are not usually sold for mass market toys, especially not those of western banding and where the board is buried deep in side.  (One slight exception is that spare boards are available for some cheap drones; but there the board is exposed, and much more likely to suffer crash damage - and even then, only a minority of brands sell them).  Even in the unlikely event they were sold, questions about finding where to buy things are off topic on this site.\nIf this were an item of orders of magnitude higher value than it is, a skilled technician could probably attempt to glue the board back together then repair enough of the broken traces to get those sensor/actuator wires re-integrated into the circuit.  Or to re-assemble it enough to take a picture and then transfer the components to the new board designed from that.  But that's hundreds to thousands of dollars of labor equivalent unjustified for a simple toy, unless you have the skill to do it yourself and the emotional attachment to an irreplaceable treasure warrants it.\nAn interesting alternative would be to try to replace the board with something custom; if the child is reaching an age where programming projects become plausible, a &quot;brain transplant&quot; based on some experimenter MCU platform (Arduino, circuit python, Espruino, whatever) could be quite rewarding - but would take a lot of work to figure out the sensor/actuator interface.\nOr maybe you can find another of the toy broken in a different way, and get the board from that."
+}

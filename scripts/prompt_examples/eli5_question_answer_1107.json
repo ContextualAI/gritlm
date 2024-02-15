@@ -1,0 +1,20 @@
+{
+  "q_intent": "find answer comments",
+  "q_domain": "Subreddit ELI5",
+  "q_unit": "answer comment",
+  "q_instructions": [
+    "Represent the question to find answer comments from the Subreddit ELI5",
+    "Represent this question in order to get an answer for it from Reddit (ELI5)",
+    "Represent this user question to find a fitting answer on r/ELI5"
+  ],
+  "d_intent": "find answer comments",
+  "d_domain": "Subreddit ELI5",
+  "d_unit": "answer comment",
+  "d_instructions": [
+    "Represent the comment to find a reddit question it answers",
+    "Represent this comment in order to find a fitting question on r/ELI5",
+    "Represent this answer to find a question it addresses that was posed on the subreddit ELI5"
+  ],
+  "query": "Why do we hear static from radios and TV's when there's nothing being broadcast? Shouldn't we just hear silence?",
+  "doc": "Because there isn't nothing there. Every spectrum is full of random noise from stars, radioactive decay, all sorts of things like that. It's just terrestrial broadcasts are so much stronger that it overwhelms the random noise. This is why when you start reaching the edge of the coverage area for the station you're listening to, it starts getting more and more static-ey and doesn't just go from \"fine\" to \"nothing.\""
+}

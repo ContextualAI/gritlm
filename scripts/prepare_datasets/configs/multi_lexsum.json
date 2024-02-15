@@ -1,0 +1,13 @@
+{
+  "task": "multi_lexsum",
+  "num": 3177,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Legal statement: ",
+  "doc_instruction": "Represent the Legal document: ",
+  "default_domain": "Legal ",
+  "llama2_batch_size": 1,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["statement","statement","statement","sentence","description"],
+  "doc_text_types": ["passage","document","paragraph","description"]
+}

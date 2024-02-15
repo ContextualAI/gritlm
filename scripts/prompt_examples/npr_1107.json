@@ -1,0 +1,20 @@
+{
+  "q_intent": "with more details",
+  "q_domain": "news",
+  "q_unit": "subtitle",
+  "q_instructions": [
+    "Represent the headline to find a news subtitle on NPR with more details",
+    "Represent this text to find its subtitle about the same news but with slightly more depth",
+    "Represent this short title to find a subtitle that might be right below it on NPR"
+  ],
+  "d_intent": "shorter text",
+  "d_domain": "news",
+  "d_unit": "title",
+  "d_instructions": [
+    "Represent the subtitle to find a news title on NPR with less details",
+    "Represent this text to find its title about the same news but with slightly less depth",
+    "Represent this subtitle to find a title that might be right above it on NPR"
+  ],
+  "query": "A Pass to Ride the Bus for Free",
+  "doc": "We hear the thoughts and tales \u2014 as told by storyteller David Greenberger \u2014 of an elderly resident of Erie, Pa., an adventure that began with a free bus pass."
+}

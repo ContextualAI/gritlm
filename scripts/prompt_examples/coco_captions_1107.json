@@ -1,0 +1,12 @@
+{
+  "intent": "finding similar",
+  "domain": "image caption",
+  "unit": "short descriptions",
+  "instructions": [
+    "Represent the description about an image caption for finding similar short descriptions",
+    "Represent this image caption as a vector to find a similar short description",
+    "Represent the text to find another text that is a caption of the same image"
+  ],
+  "query": "a bicycle with a basket on the wall of a building",
+  "doc": "A bicycle parked against a dirty wall on a ledge"
+}

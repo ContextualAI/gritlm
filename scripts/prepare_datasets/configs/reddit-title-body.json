@@ -1,0 +1,13 @@
+{
+  "task": "reddit-title-body",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Reddit title for retrieving relevant documents: ",
+  "doc_instruction": "Represent the Reddit document for retrieval: ",
+  "default_domain": "Reddit ",
+  "llama2_batch_size": 4,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["title","sentence","title","sentence","text"],
+  "doc_text_types": ["passage","document","document","paragraph","passage","document","document","paragraph","post"]
+}

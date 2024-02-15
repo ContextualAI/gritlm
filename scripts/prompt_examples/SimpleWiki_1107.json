@@ -1,0 +1,12 @@
+{
+  "intent": "sentence equivalent in meaning",
+  "domain": "Wikipedia",
+  "unit": "sentence",
+  "instructions": [
+    "Represent the sentence for finding a Wikipedia sentence equivalent in meaning",
+    "Represent this text in order to find another text from Wikipedia that is very very similar (same meaning etc.) but maybe slightly different words",
+    "Represent this input text to find a Wikipedia text with the same meaning and length"
+  ],
+  "query": "It lay to the north of the modern North-West Frontier Province of Pakistan until it was dissolved in 1969 .",
+  "doc": "It lay to the north of the modern Khyber-Pakhtunkhwa Province of Pakistan until it was dissolved in 1969 ."
+}

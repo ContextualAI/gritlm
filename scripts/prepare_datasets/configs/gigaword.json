@@ -1,0 +1,13 @@
+{
+  "task": "gigaword",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the News article: ",
+  "doc_instruction": "Represent the News sentence: ",
+  "default_domain": "News ",
+  "llama2_batch_size": 1,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["article","document","passage","paragraph","description"],
+  "doc_text_types": ["sentence","text","description","title","summarization","statement"]
+}

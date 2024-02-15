@@ -1,0 +1,13 @@
+{
+  "task": "WikiAnswers",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Wikipedia question: ",
+  "doc_instruction": "Represent the Wikipedia answer: ",
+  "default_domain": "Wikipedia ",
+  "llama2_batch_size": 4,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["question","query","question","query","post"],
+  "doc_text_types": ["question","query","question","query","post"]
+}

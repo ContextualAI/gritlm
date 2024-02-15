@@ -1,0 +1,20 @@
+{
+  "q_intent": "finding related descriptions",
+  "q_domain": "news",
+  "q_unit": "one to two sentences",
+  "q_instructions": [
+    "Represent the sentence for finding related news descriptions of one to two sentences",
+    "Represent the short description in order to find another similar description that is of the same length or slightly longer",
+    "Represent this text to retrieve a highly related desc of 1-2 sentences in length"
+  ],
+  "d_intent": "finding headline",
+  "d_domain": "news",
+  "d_unit": "headline",
+  "d_instructions": [
+    "Represent the news description for finding a short headline for it",
+    "Represent this description in order to find a describing headline",
+    "Represent this text to retrieve a short headline"
+  ],
+  "query": "Collins slapped with 8-year ban Sprinter, 33, faces end of her ...",
+  "doc": "If Michelle Collins were a Major League Baseball player, she would have received a slap on the wrist for using banned performance-enhancing drugs."
+}

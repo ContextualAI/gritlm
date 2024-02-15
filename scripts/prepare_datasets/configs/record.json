@@ -1,0 +1,13 @@
+{
+  "task": "record",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the News sentence for retrieving relevant documents: ",
+  "doc_instruction": "Represent the News document for retrieval: ",
+  "default_domain": "News ",
+  "llama2_batch_size": 1,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["title","summarization","sentence","sentence","text","post"],
+  "doc_text_types": ["description","text","passage","paragraph","article","document","passage","paragraph","article","document"]
+}

@@ -1,0 +1,20 @@
+{
+  "q_intent": "retrieving the relevant explanations",
+  "q_domain": "medical",
+  "q_unit": "question",
+  "q_instructions": [
+    "Represent the question to find a passage that answers it from a medical database",
+    "Represent this medical query to retrieve a long-form and detailed answer from a medical data store (it can be a bit technical)",
+    "Represent this health question to find a professional medical answer for it"
+  ],
+  "d_intent": "find question",
+  "d_domain": "medical",
+  "d_unit": "question",
+  "d_instructions": [
+    "Represent the passage to find a medical question it answers",
+    "Represent this medical answer to find a short question answered by it",
+    "Represent this to find a question (health domain) which it addresses"
+  ],
+  "query": "Do French lay people and health professionals find it acceptable to breach confidentiality to protect a patient's wife from a sexually transmitted disease?",
+  "doc": "To determine under what conditions lay people and health professionals find it acceptable for a physician to breach confidentiality to protect the wife of a patient with a sexually transmitted disease (STD). In a study in France, breaching confidentiality in 48 scenarios were accepted by 144 lay people, 10 psychologists and 7 physicians. The scenarios were all possible combinations of five factors: severity of the disease (severe, lethal); time taken to discuss this with (little time, much time); intent to inform the spouse about the disease (none, one of these days, immediately); intent to adopt protective behaviours (no intent, intent); and decision to consult an expert in STDs (yes, no), 2 x 2 x 3 x 2 x 2. The importance and interactions of each factor were determined, at the group level, by performing analyses of variance and constructing graphs. The concept of breaching confidentiality to protect a wife from her husband's STD was favoured much more by lay people and psychologists than by physicians (mean ratings 11.76, 9.28 and 2.90, respectively, on a scale of 0-22). The patient's stated intentions to protect his wife and to inform her of the disease had the greatest impact on acceptability. A cluster analysis showed groups of lay participants who found breaching confidentiality \"always acceptable\" (n = 14), \"depending on the many circumstances\" (n = 87), requiring \"consultation with an expert\" (n = 30) and \"never acceptable (n = 13)\"."
+}

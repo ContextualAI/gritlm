@@ -1,0 +1,13 @@
+{
+  "task": "S2ORC_title_abstract",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Science sentence for retrieving relevant documents: ",
+  "doc_instruction": "Represent the Science document for retrieval: ",
+  "default_domain": "Science ",
+  "cur_default_domain_coexist": true,
+  "llama2_batch_size": 1,
+  "query_text_types": ["title","title","title","title","title","title","title","sentence","sentence","text","argument"],
+  "doc_text_types": ["abstract","passage","paragraph","abstract","passage","paragraph","abstract","passage","paragraph","document","paper"]
+}

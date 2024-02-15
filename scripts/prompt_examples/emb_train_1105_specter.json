@@ -1,0 +1,12 @@
+{
+  "intent": "finding similar topics",
+  "domain": "scientific topic",
+  "unit": "title",
+  "instructions": [
+    "Represent the title to find a title about a similar scientific topic",
+    "Represent this paper title to retrieve another one on the same topic",
+    "Represent this to find a paper title about the same topic"
+  ],
+  "query": "Deep Unsupervised Similarity Learning Using Partially Ordered Sets",
+  "doc": "Discriminative decorrelation for clustering and classification"
+}

@@ -1,0 +1,13 @@
+{
+  "task": "scitldr",
+  "num": 1990,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Science document: ",
+  "doc_instruction": "Represent the Science sentence: ",
+  "default_domain": "Science ",
+  "llama2_batch_size": 1,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["article","document","passage","paragraph","paper"],
+  "doc_text_types": ["sentence","text","abstract","summarization"]
+}

@@ -1,0 +1,20 @@
+{
+  "q_intent": "find a corresponding",
+  "q_domain": "news",
+  "q_unit": "article",
+  "q_instructions": [
+    "Represent the text to find a corresponding news article that continues the story",
+    "Represent the summary to retrieve the rest of the news story with more details",
+    "This is the first sentence of a news article. Represent it to easily retrieve the remaining few sentences of the article"
+  ],
+  "d_intent": "retrieve summary",
+  "d_domain": "news",
+  "d_unit": "summary",
+  "d_instructions": [
+    "Represent the news to retrieve its missing first sentence",
+    "Represent the news article to find a single sentence that could be used as a summary",
+    "This is part of a news article. Represent it to retrieve the first (missing) sentence of the article"
+  ],
+  "query": "Leyton Orient have signed striker Armand Gnanduillet from Chesterfield for an undisclosed fee.",
+  "doc": "The 23-year-old, who spent three years at the Spireites, has penned a two-and-a-half-year deal.\nThe former Ivory Coast Under-20 international made 82 league appearances for Chesterfield, scoring 10 times for the League One side.\nMeanwhile, first-team coach Kevin Nugent has left the O's after the arrival of Kevin Nolan as player-boss.\nFind all the latest football transfers on our dedicated page."
+}

@@ -1,0 +1,13 @@
+{
+  "task": "eli5_question_answer",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Reddit question: ",
+  "doc_instruction": "Represent the Reddit answer: ",
+  "default_domain": "Reddit ",
+  "llama2_batch_size": 1,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["question","query","post", "title"],
+  "doc_text_types": ["answer","passage","document","document","document","document","document","paragraph","post","argument","comment","text","sentence","document"]
+}

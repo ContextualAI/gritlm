@@ -1,0 +1,13 @@
+{
+  "task": "squad_pairs",
+  "num": 87599,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the question: ",
+  "doc_instruction": "Represent the answer: ",
+  "default_domain": "Wikipedia ",
+  "llama2_batch_size": 4,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["question","query","post"],
+  "doc_text_types": ["answer","passage","document","document","document","document","document","paragraph","post","argument","comment","text","sentence","document"]
+}

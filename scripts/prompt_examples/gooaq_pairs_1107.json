@@ -1,0 +1,20 @@
+{
+  "q_intent": "finding an answer",
+  "q_domain": "non-technical",
+  "q_unit": "paragraph",
+  "q_instructions": [
+    "Represent the query for finding a non-technical answer paragraph.",
+    "Represent this question to make it easy to find an answer paragraph",
+    "Represent the user input such that it is easy to find an answer of about a paragraph in length"
+  ],
+  "d_intent": "finding a question",
+  "d_domain": "",
+  "d_unit": "query",
+  "d_instructions": [
+    "Represent the text for finding a question that it addresses",
+    "Represent this passage to find a layman question which it can answer",
+    "Represent this passage to find a Google-like query that it adequately answers"
+  ],
+  "query": "how long does it take to get a loan with lending club?",
+  "doc": "How long does it take to get approved? The whole application, approval, and funding process takes on average 7 business days. In some cases, it can take a little longer. Once a loan is approved and backed by investors, the funds are electronically deposited into your bank account."
+}

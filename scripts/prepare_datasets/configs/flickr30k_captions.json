@@ -1,0 +1,13 @@
+{
+  "task": "flickr30k_captions",
+  "num": 31783,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the sentence: ",
+  "doc_instruction": "Represent the sentence: ",
+  "default_domain": "",
+  "llama2_batch_size": 4,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["Image caption","Image description"],
+  "doc_text_types":  ["Image caption","Image description"]
+}

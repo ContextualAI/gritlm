@@ -1,0 +1,20 @@
+{
+  "q_intent": "matching snippet",
+  "q_domain": "code",
+  "q_unit": "code snippet",
+  "q_instructions": [
+    "Represent the description to retrieve the matching code snippet",
+    "Represent the comment to find the code to come after it",
+    "Represent the code comment in order to find a fitting code continuation"
+  ],
+  "d_intent": "finding description",
+  "d_domain": "code-style",
+  "d_unit": "few lines",
+  "d_instructions": [
+    "Represent the code snippet for finding a code-style description about it of a few lines",
+    "Represent this code to find a code comment about it that would likely be above it",
+    "Represent the code extract to retrieve a somewhat detailed code comment related to it"
+  ], 
+  "query": "// connect connects to the SSH server, unless a AuthMethod was set with\n// SetAuth method, by default uses an auth method based on PublicKeysCallback,\n// it connects to a SSH agent, using the address stored in the SSH_AUTH_SOCK\n// environment var.",
+  "doc": "func (c *command) connect() error {\n\tif c.connected {\n\t\treturn transport.ErrAlreadyConnected\n\t}\n\n\tif c.auth == nil {\n\t\tif err := c.setAuthFromEndpoint(); err != nil {\n\t\t\treturn err\n\t\t}\n\t}\n\n\tvar err error\n\tconfig, err := c.auth.ClientConfig()\n\tif err != nil {\n\t\treturn err\n\t}\n\n\toverrideConfig(c.config, config)\n\n\tc.client, err = dial(\"tcp\", c.getHostWithPort(), config)\n\tif err != nil {\n\t\treturn err\n\t}\n\n\tc.Session, err = c.client.NewSession()\n\tif err != nil {\n\t\t_ = c.client.Close()\n\t\treturn err\n\t}\n\n\tc.connected = true\n\treturn nil\n}"
+}

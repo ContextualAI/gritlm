@@ -1,0 +1,20 @@
+{
+  "q_intent": "find corresponding review",
+  "q_domain": "Amazon",
+  "q_unit": "review body text",
+  "q_instructions": [
+    "Represent the title to find the corresponding review body text from Amazon",
+    "Represent this title in order to find its review text on Amazon",
+    "Represent this title such that is representation is similar to a fitting Amazon review text"
+  ],
+  "d_intent": "find corresponding title",
+  "d_domain": "Amazon",
+  "d_unit": "review title",
+  "d_instructions": [
+    "Represent the review to find a title for it from reviews on Amazon",
+    "Represent this review in order to find a fitting title on Amazon",
+    "This is a review from Amazon. Represent it so that it is is similar to a fitting title"
+  ],
+  "query": "Actually makes me want to pick up poop...",
+  "doc": "so nice to not have to get close to the poop. All i do is spray it off for the next use before i put it away and never have to touch the bad stuff.  You can pick up A LOT of poop before you have to empty the scoop. Helps if the poop is hard, gets messy if not, but like i said you can just spray it off if it does"
+}

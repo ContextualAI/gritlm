@@ -1,0 +1,20 @@
+{
+  "q_intent": "finding candidate answers",
+  "q_domain": "medical",
+  "q_unit": "multiple choice format",
+  "q_instructions": [
+    "Represent the query for finding medical candidate answers in a multiple choice format",
+    "Represent this input so we can match it with some multiple-choice answer candidates",
+    "Represent the text to match it with 3-4 possible short answers - at least one of which is correct"
+  ],
+  "d_intent": "finding a relevant that can be answered",
+  "d_domain": "medical",
+  "d_unit": "sentence",
+  "d_instructions": [
+    "Represent for finding a relevant medical sentence that can be answered with one of the choices.",
+    "Represent this to find a multiple-choice input query that may precede it",
+    "Represent this to find a short query that can be answered with one of the choices"
+  ],
+  "query": "Blood supply of stomach is/are:",
+  "doc": "A. i.e. Left gastric aery; B. i.e. Sho gastric aery; C. i.e. Left gastroepiploic aery"
+}

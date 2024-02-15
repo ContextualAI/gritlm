@@ -1,0 +1,13 @@
+{
+  "task": "yahoo_answers_title_answer",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Yahoo question: ",
+  "doc_instruction": "Represent the Yahoo answer: ",
+  "default_domain": "Yahoo ",
+  "llama2_batch_size": 4,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["question","query","post", "title"],
+  "doc_text_types": ["answer","passage","document","document","document","document","document","paragraph","post","argument","comment","text","sentence","document"]
+}

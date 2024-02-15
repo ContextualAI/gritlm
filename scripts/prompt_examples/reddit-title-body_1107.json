@@ -1,0 +1,20 @@
+{
+  "q_intent": "finding message body",
+  "q_domain": "reddit",
+  "q_unit": "message body",
+  "q_instructions": [
+    "Represent the reddit title for finding its reddit message body",
+    "Represent this title from reddit to retrive its corresponding body message",
+    "Represent this Reddit headline to find its subtitle/message"
+  ],
+  "d_intent": "finding title",
+  "d_domain": "reddit",
+  "d_unit": "title",
+  "d_instructions": [
+    "Represent the reddit message body for finding its title",
+    "Represent this message body from reddit to retrive its corresponding title",
+    "Represent this Reddit message to find its title"
+  ],
+  "query": "Boiling on electric burners (sloooow)",
+  "doc": "I re-started homebrewing in December (after a 2-year hiatus).  My apartment has an electric stove, and the burners are fairly small.  The biggest problem I'm having is that I can barely bring the liquid to a boil, even when I cover the pot.  Once I get it to a rolling boil it's okay, but getting the wort up to temperature takes 2-3 hours.\n\nAny ideas for dealing with this?  Should I just use less liquid? (currently boiling 3 gallons, then adding water up to 5 gallons)  Or is there another trick that might save me some time?"
+}

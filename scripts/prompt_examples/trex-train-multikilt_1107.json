@@ -1,0 +1,20 @@
+{
+  "q_intent": "provides information about it",
+  "q_domain": "Wikipedia",
+  "q_unit": "abstract",
+  "q_instructions": [
+    "Represent the title to find a Wikipedia abstract that provides information about it",
+    "This is the title of a Wikipedia page. Represent it in order to find the abstract of its page",
+    "Represent this short snippet to find a raw passage from Wikipedia with more details"
+  ],
+  "d_intent": "find title",
+  "d_domain": "",
+  "d_unit": "few words",
+  "d_instructions": [
+    "Represent the abstract to find a few words title for it",
+    "Represent this abstract in order to find a short Wikipedia-style title of it",
+    "Represent this passage to find a title from Wikipediafor it"
+  ],
+  "query": "Kingston (CDP), Massachusetts",
+  "doc": "Kingston (CDP), Massachusetts\nKingston is a census-designated place (CDP) in the town of Kingston in Plymouth County, Massachusetts, United States. The population was 5,591 at the 2010 census.\nGeography.\nKingston is located at (41.992453, -70.717325).\nAccording to the United States Census Bureau, the CDP has a total area of 16.3\u00a0km\u00b2 (6.3\u00a0mi\u00b2), of which 12.5\u00a0km\u00b2 (4.8\u00a0mi\u00b2) is land and 3.8\u00a0km\u00b2 (1.5\u00a0mi\u00b2)"
+}

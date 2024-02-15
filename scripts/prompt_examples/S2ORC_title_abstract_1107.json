@@ -1,0 +1,20 @@
+{
+  "q_intent": "retrieving the corresponding",
+  "q_domain": "scientific",
+  "q_unit": "abstract",
+  "q_instructions": [
+    "Represent the title for retrieving the corresponding scientific abstract",
+    "Represent this title from a paper to retrieve its scientific short abstract",
+    "Represent this paper title in order to find a scientific intro to what it is about"
+  ],
+  "d_intent": "retrieving the",
+  "d_domain": "scientific",
+  "d_unit": "title",
+  "d_instructions": [
+    "Represent the abstract for retrieving the scientific paper title",
+    "Represent this abstract from a paper to retrieve its scientific title",
+    "Represent this scientific intro in order to find the title of the paper"
+  ],
+  "query": "INFRARED OPTICAL FIBERS MADE FROM CHALCOGENIDE GLASS",
+  "doc": "This paper describes the types and properties of chalcogenide glass and some methods of purifying the glass-forming materials, introduces the glass melting process and methods for manufacturing optical fibers and image guide bundles and also discusses the application of chalcogenide glass fibers in civil, medical and military fields as well as their developing prospects."
+}

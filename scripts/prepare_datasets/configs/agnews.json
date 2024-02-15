@@ -1,0 +1,13 @@
+{
+  "task": "agnews",
+  "num": 200000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the News sentence for retrieving relevant documents: ",
+  "doc_instruction": "Represent the News document for retrieval: ",
+  "default_domain": "News ",
+  "llama2_batch_size": 1,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["title","title","title","title","title","title","sentence","sentence","text","summarization"],
+  "doc_text_types": ["description","description","sentence","description","sentence","description","sentence","text","passage"]
+}

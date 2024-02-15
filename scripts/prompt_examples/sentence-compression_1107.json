@@ -1,0 +1,20 @@
+{
+  "q_intent": "finding a short",
+  "q_domain": "news",
+  "q_unit": "headline",
+  "q_instructions": [
+    "Represent the text for finding a short news headline",
+    "Represent the text for finding an even shorter news title about it",
+    "Represent the news text to find a similar news text that is like a short summary of it"
+  ],
+  "d_intent": "finding a short",
+  "d_domain": "news",
+  "d_unit": "short news snippet",
+  "d_instructions": [
+    "Represent the text for finding a short news snippet with more details",
+    "Represent this headline to find a title of the same news but slightly longer",
+    "Represent this to retrieve a news subtitle for it"
+  ],
+  "query": "Regulators have shut down a bank in Maryland, marking the 87th failure this year of a federally insured bank.",
+  "doc": "Regulators shut down Maryland bank"
+}

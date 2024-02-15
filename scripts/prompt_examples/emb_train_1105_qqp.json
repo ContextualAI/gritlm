@@ -1,0 +1,12 @@
+{
+  "intent": "finding similar questions",
+  "domain": "Quora-style",
+  "unit": "question",
+  "instructions": [
+    "Represent the question to find a similar Quora-style question",
+    "Represent this user queston to find a duplicate on Quora",
+    "Represent this to find another user's question on Quora that asks the same thing"
+  ],
+  "query": "Can someone travel back in time?",
+  "doc": "Can we travel in time?"
+}

@@ -1,0 +1,12 @@
+{
+  "intent": "find paraphrase questions",
+  "domain": "WikiAnswers",
+  "unit": "similar length",
+  "instructions": [
+    "Represent to find paraphrase questions with similar length from WikiAnswers",
+    "Represent this WikiAnswers query to find duplicate questions of it",
+    "Represent this question somewhat asks to retrieve paraphrases of it so we can match them"
+  ],
+  "query": "Where is the outside air temp sensor?",
+  "doc": "How do you fix outside temperature sensor for acura mdx?"
+}

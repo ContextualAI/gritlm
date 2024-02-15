@@ -1,0 +1,20 @@
+{
+  "q_intent": "explains and contains missing piece",
+  "q_domain": "",
+  "q_unit": "passage",
+  "q_instructions": [
+    "Represent the fact to find a passage that contains and explains the relevant missing piece",
+    "Represent this statement to get a longer passage which provides more details on the left-out part",
+    "Represent this claim to retrieve a passage from the Web which explains and contains the missing piece"
+  ],
+  "d_intent": "find a statement",
+  "d_domain": "",
+  "d_unit": "passage",
+  "d_instructions": [
+    "Represent the passage to find a statement about it",
+    "Represent this web passage to get a claim about it",
+    "Represent this text to get a statement about it with a missing piece which is contained in this passage"
+  ],
+  "query": "In 1610 Galileo became the first to find other moons when he saw moons orbiting this giant planet",
+  "doc": "Go Observe | International Year of Astronomy 2009  Find Jupiter in the Sky. In January, 1610, Galileo pointed his telescope at Jupiter. ... But accompanying Jupiter, he saw four \"stars\" which followed the planet across ... Examples of Galileo's drawings, showing how Jupiter's four largest moons ... any heavenly bodies were seen clearly orbiting something other than the Earth."
+}

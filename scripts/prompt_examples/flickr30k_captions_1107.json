@@ -1,0 +1,12 @@
+{
+  "intent": "finding similar descriptions",
+  "domain": "image caption",
+  "unit": "short",
+  "instructions": [
+    "Represent for finding similar similar short image descriptions",
+    "Represent this image caption to find another similar image caption",
+    "Represent this caption to find a short caption that could stem from the same image"
+  ],
+  "query": "A group of tourists is crossing a bridge that connects a walking path to a trail of nature.",
+  "doc": "This shows a group of people walking over an arched red bridge."
+}

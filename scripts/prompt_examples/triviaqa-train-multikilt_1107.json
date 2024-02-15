@@ -1,0 +1,20 @@
+{
+  "q_intent": "retrieving the answer",
+  "q_domain": "Wikipedia",
+  "q_unit": "passage",
+  "q_instructions": [
+    "Represent the query for retrieving a passage with the answer from Wikipedia",
+    "Represent this question in order to get a Wikipedia passage which has the answer",
+    "Represent this Trivia Question to find a Wikipedia paragraph that answers it"
+  ],
+  "d_intent": "find question",
+  "d_domain": "",
+  "d_unit": "simple question",
+  "d_instructions": [
+    "Represent the text to find a simple trivia question which it answers",
+    "Represent this Wikipedia text to get a TriviaQA question about it that it can answer",
+    "Represent this Wikipedia text to find a world-knowledge question that it answers"
+  ],
+  "query": "Which poet wrote about the charms of Miss Joan Hunter Dunn?",
+  "doc": "Joan Hunter Dunn\nJoan Jackson, n\u00e9e Joan Hunter Dunn (13 October 1915 \u2013 11 April 2008) was the muse of Sir John Betjeman in his poem \"A Subaltern's Love-song\".\nShe was the daughter of Dr George Hunter Dunn, a GP from Farnborough, Hampshire. Her grandfather, Andrew Hunter Dunn, was Bishop of Quebec from 1892 to 1914, and her uncle Edward Dunn was Bishop of British Honduras and Archbishop of the West Indies. A great-great-grandfather was William Hunter,"
+}

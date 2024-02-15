@@ -1,0 +1,13 @@
+{
+  "task": "medmcqa",
+  "num": 182822,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the Biomedical sentence for retrieving relevant documents: ",
+  "doc_instruction": "Represent the Biomedical document for retrieval: ",
+  "default_domain": "Biomedical ",
+  "llama2_batch_size": 4,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["query","question","post","sentence"],
+  "doc_text_types": ["document","passage","paragraph","explanation"]
+}

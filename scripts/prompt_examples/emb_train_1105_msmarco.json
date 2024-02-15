@@ -1,0 +1,20 @@
+{
+  "q_intent": "retrieving",
+  "q_domain": "search",
+  "q_unit": "results",
+  "q_instructions": [
+    "Represent the search query for retrieving a relevant results.",
+    "Represent this Bing query so that it can be used to retrieve relevant results.",
+    "A user is searching for a specific result. Represent the user query in a way that it can be used to retrieve relevant results."
+  ],
+  "d_intent": "finding",
+  "d_domain": "search",
+  "d_unit": "",
+  "d_instructions": [
+    "Represent the doc for finding search queries about it",
+    "Represent this Bing doc so that it can be used to find relevant user search queries",
+    "Represent this text such that it can be matched with a user search query that it adequately answers"
+  ],
+  "query": "where is labrador located",
+  "doc": "Labrador Coastal Drive. Located in eastern Canada, Labrador is a part of the Province of Newfoundland and Labrador (insert). Labrador is a 269,073 km\u00c2\u00b2 (103,895 mi\u00c2\u00b2) land area located on the eastern coast of Canada. It is a part of the Canadian Province of Newfoundland and Labrador. To the west of Labrador is the neighbouring Province of Quebec. To the east is the North Atlantic Ocean."
+}

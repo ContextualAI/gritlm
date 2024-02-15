@@ -1,0 +1,20 @@
+{
+  "q_intent": "find information",
+  "q_domain": "scientific",
+  "q_unit": "information",
+  "q_instructions": [
+    "Represent the term to find more information about it from Wikipedia (~1 paragraph)",
+    "Represent this phrase to find its first Wikipedia paragraph",
+    "Represent this input to retrieve the first passage from its Wikipedia page"
+  ],
+  "d_intent": "find term",
+  "d_domain": "scientific",
+  "d_unit": "term",
+  "d_instructions": [
+    "Represent the text to find the scientific term it describes",
+    "Represent this Wikipedia passage to find its title",
+    "Represent this paragraph to retrieve the one term that is most relevant to it"
+  ],
+  "query": "Eriocaulon sivarajanii",
+  "doc": "Eriocaulon sivarajanii\nEriocaulon sivarajanii is a critically endangered monocotyledonous plant endemic to Kozhikode in the state of Kerala, India."
+}

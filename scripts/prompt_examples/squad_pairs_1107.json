@@ -1,0 +1,20 @@
+{
+  "q_intent": "find answer",
+  "q_domain": "Wikipedia",
+  "q_unit": "passage",
+  "q_instructions": [
+    "Represent the question to find a Wikipedia passage that answers it",
+    "Represent this query to find a passage from Wikipedia to answer it",
+    "Represent this query to get a raw Wikipedia paragraph with the answer inside it"
+  ],
+  "d_intent": "find question",
+  "d_domain": "",
+  "d_unit": "concise",
+  "d_instructions": [
+    "Represent the passage to find a concise question it answers",
+    "Represent this Wikipedia passage to find a question which it answers",
+    "Represent this text to find a question from a user which the text answers"
+  ],
+  "query": "During what years was Edward Malloy president of Notre Dame?",
+  "doc": "In the 18 years under the presidency of Edward Malloy, C.S.C., (1987\u20132005), there was a rapid growth in the school's reputation, faculty, and resources. He increased the faculty by more than 500 professors; the academic quality of the student body has improved dramatically, with the average SAT score rising from 1240 to 1360; the number of minority students more than doubled; the endowment grew from $350 million to more than $3 billion; the annual operating budget rose from $177 million to more than $650 million; and annual research funding improved from $15 million to more than $70 million. Notre Dame's most recent[when?] capital campaign raised $1.1 billion, far exceeding its goal of $767 million, and is the largest in the history of Catholic higher education."
+}

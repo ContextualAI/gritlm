@@ -1,0 +1,20 @@
+{
+  "q_intent": "retrieve answer",
+  "q_domain": "casual conversation-like",
+  "q_unit": "a few sentences up to a paragraph",
+  "q_instructions": [
+    "Represent the question to retrieve a casual conversation-like answer of a few sentences up to a paragraph",
+    "Represent the q to get its answer written in a casual style of up to a paragraph in length",
+    "Represent this user question such that we can find its answer which should be casual and be at most a passage"
+  ],
+  "d_intent": "find question",
+  "d_domain": "",
+  "d_unit": "short",
+  "d_instructions": [
+    "Represent the answer to find a short question that it answers",
+    "Represent this passage to retrieve a short question it addresses",
+    "This is an answer to a short casual question. Represent it such that we can find the question"
+  ],
+  "query": "Can you use this to sterilize pumping parts and pacifiers?",
+  "doc": "Yes, I put all of my Medela parts and Pacifiers in here. I've even used it on small plastic toys."
+}

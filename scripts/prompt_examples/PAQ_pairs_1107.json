@@ -1,0 +1,20 @@
+{
+  "q_intent": "find an answer",
+  "q_domain": "Wikipedia",
+  "q_unit": "passage",
+  "q_instructions": [
+    "Represent the question to find an answer passage on Wikipedia",
+    "Represent this query in order to get a passage on Wikipedia with the correct answer in it",
+    "We got this question and need to find a Wikipedia text (can be much longer) with the answer. Can you represent it so we can find it?"
+  ],
+  "d_intent": "find question",
+  "d_domain": "Wikipedia",
+  "d_unit": "question",
+  "d_instructions": [
+    "Represent the passage to find a Wikipedia-style question for it which it answers",
+    "Represent this long passage from Wikipedia to make it easy to retrieve a question it might answer",
+    "Represent this text to find a question that an avid Wikipedia user may have had prior to reading this text"
+  ],
+  "query": "what percentage of funds are transferred to the eu from switzerland",
+  "doc": "The tax would increase gradually to 35% by 2011, with 75% of the funds being transferred to the EU. Recent estimates value EU capital inflows to Switzerland to $8.3 billion. Switzerland is a member of a number of international economic organizations, including the United Nations, the World Trade Organization, the International Monetary Fund, the World Bank, and the Organisation for Economic Co-operation and Development. Economy of Switzerland The economy of Switzerland is one of the world's most advanced economies. The service sector has come to play a significant economic role, particularly the Swiss banking industry and tourism. The economy of"
+}

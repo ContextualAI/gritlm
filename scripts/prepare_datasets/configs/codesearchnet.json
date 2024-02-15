@@ -1,0 +1,13 @@
+{
+  "task": "codesearchnet",
+  "num": 1000000,
+  "query_batch_size": 1000,
+  "force_recreate": true,
+  "query_instruction": "Represent the comment for retrieving relevant codes: ",
+  "doc_instruction": "Represent the code for retrieval: ",
+  "default_domain": "Github ",
+  "llama2_batch_size": 1,
+  "cur_default_domain_coexist": true,
+  "query_text_types": ["sentence","comment","summarization","text","post","description","instruction"],
+  "doc_text_types": ["code"]
+}

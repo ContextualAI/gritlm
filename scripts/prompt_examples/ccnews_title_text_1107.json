@@ -1,0 +1,20 @@
+{
+  "q_intent": "find an explanatory",
+  "q_domain": "news",
+  "q_unit": "article",
+  "q_instructions": [
+    "Represent the title to find an explanatory news article.",
+    "Represent this title to get a news article that provides more details about it",
+    "I found this news title. Can you represent it to find an explanatory news article?"
+  ],
+  "d_intent": "find a fitting",
+  "d_domain": "news",
+  "d_unit": "title",
+  "d_instructions": [
+    "Represent the article to find a fitting news title.",
+    "Represent this text to find a news title for it",
+    "This news article should be represented to find a fitting news title."
+  ],
+  "query": "Have A Full Smile Again With Edinburgh Dental Specialists",
+  "doc": "Smiling with missing teeth doesn\u2019t have quite the same effect as flashing someone a great toothy smile. That\u2019s where dentures from Edinburgh Dental Specialists come in.\n[EDINBURGH, 04/07/2018] \u2013 Edinburgh Dental Specialists dentures are a solution for anyone in Edinburgh with missing teeth, but they are most commonly used by older people. The gums and teeth have served their purpose for many years, but this does not mean that older people should have to get used to missing teeth or miss out on the benefits of healthy straight teeth.\nDepending on the patient\u2019s needs, Edinburgh Dental Specialists can offer partial dentures, or full dentures. Modern technology has enabled Edinburgh Dental Specialists dentures to be more comfortable than before.\nPartial dentures from Edinburgh Dental Specialists fill single or multiple gaps by using a plastic, nylon or metal plate with false teeth attached, whereas full dentures will be fitted to patients missing all of their upper or lower teeth.\nFor patients to get used to them at the beginning, it\u2019s best to wear dentures from Edinburgh Dental Specialists all day. When they are removed, they should be kept in a moist environment overnight to stop them from changing shape.\nIt\u2019s also important not to neglect the remaining natural teeth, and continue to give them some tender loving care, cleaning them morning and evening, alongside the dentures from Edinburgh Dental Specialists. This will help minimise the risk of tooth decay and gum disease.\nPatients should also avoid certain foods and drinks if possible, such as popcorn, sticky toffee, and caffeine. It\u2019s best to find other ways to get a kick of energy. In moderation, tea and coffee are okay, but overtime they can cause the dentures from Edinburgh Dental Specialists to stain.\nTo maintain good oral health, and for dentures from Edinburgh Dental Specialists to do their job, they require a bit more cleaning than natural teeth cleaning. Dentures from Edinburgh Dental Specialists must be brushed with toothpaste or soap and water to remove any bits of food that may have got lodged in the artificial teeth.\nEdinburgh Dental Specialists can give details on how to look after the dentures, as well as check that everything is going smoothly, at the patient\u2019s follow-up check-ups.\nVisit http://www.edinburghdentist.com/ to learn more."
+}

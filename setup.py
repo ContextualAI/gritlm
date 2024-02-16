@@ -43,7 +43,7 @@ with open("README.md", mode="r", encoding="utf-8") as readme_file:
 
 setup(
     name='gritlm',
-    version='0.9.3',
+    version='0.9.4',
     description='GritLM',
     long_description=readme,
     long_description_content_type="text/markdown",
@@ -55,6 +55,7 @@ setup(
         "Huggingface Organization": "https://huggingface.co/gritlm",
         "Source Code": "https://github.com/ContextualAI/gritlm",
     },
+    url="https://github.com/ContextualAI/gritlm",
     packages=find_packages(),
     python_requires=">=3.7.0",
     install_requires=[

@@ -12,11 +12,11 @@
 ######################
 ### Set enviroment ###
 ######################
-cd /home/niklas/gritlm
+cd /home/niklas/gritlm/gritlm
 source /env/bin/start-ctx-user
 conda activate gritlm
 #NCCL_ASYNC_ERROR_HANDLING=1
-export TORCH_NCCL_ASYNC_ERROR_HANDLING=1
+#export TORCH_NCCL_ASYNC_ERROR_HANDLING=1
 export WANDB_PROJECT="gritlm"
 # Training setup
 GPUS_PER_NODE=8

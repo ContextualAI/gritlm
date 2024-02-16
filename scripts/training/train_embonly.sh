@@ -12,7 +12,7 @@
 ######################
 ### Set enviroment ###
 ######################
-cd /home/niklas/gritlm
+cd /home/niklas/gritlm/gritlm
 source /env/bin/start-ctx-user
 conda activate gritlm
 export WANDB_PROJECT="gritlm"

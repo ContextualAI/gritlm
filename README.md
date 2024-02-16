@@ -2,7 +2,7 @@
 
 ![](visuals/octopus.jpg)
 
-This repository provides all materials for the paper [Generative Representational Instruction Tuning](https://arxiv.org/abs/2202.08904). We continue developing the repository and welcome any contributions. If you want to use the code in the exact same way as in the paper, please use the 1.0.0 release at commit hash `TODO`.
+This repository provides all materials for the paper [Generative Representational Instruction Tuning](https://arxiv.org/abs/2402.09906). We continue developing the repository and welcome any contributions. If you want to use the code in the exact same way as in the paper, please use the 1.0.0 release at commit hash `TODO`.
 
 - [Inference](#inference)
 - [Training](#training)
@@ -119,6 +119,7 @@ Shortcuts:
 - emb/gen/gritlm = embedding, generative, unified
 - bf16c = embeddings are cast back to bf16 after pooling and similarity computation is also done in bf16 (simulating how cached embeddings would operate)
 - bb/cc/bbcc... = order of bidirectional vs causal attention
+- gendups = not using `--use_unique_indices` during training. If not used and training is unified, then data is duplicated worsening performance
 
 The most important ones are:
 
@@ -160,7 +161,9 @@ They are explained in more detail in the paper and its appendix. So to e.g. trai
 Setup:
 ```bash
 git clone https://github.com/ContextualAI/gritlm`
+cd gritlm
 pip install -e .
+cd gritlm
 ````
 
 Below are easy examples for getting started:
@@ -437,5 +440,12 @@ The code is inspired by:
 If useful please consider citing 😊
 
 ```bibtex
-TODO
+@misc{muennighoff2024generative,
+      title={Generative Representational Instruction Tuning}, 
+      author={Niklas Muennighoff and Hongjin Su and Liang Wang and Nan Yang and Furu Wei and Tao Yu and Amanpreet Singh and Douwe Kiela},
+      year={2024},
+      eprint={2402.09906},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```

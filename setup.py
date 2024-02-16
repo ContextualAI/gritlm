@@ -43,7 +43,7 @@ with open("README.md", mode="r", encoding="utf-8") as readme_file:
 
 setup(
     name='gritlm',
-    version='0.9.2',
+    version='0.9.3',
     description='GritLM',
     long_description=readme,
     long_description_content_type="text/markdown",

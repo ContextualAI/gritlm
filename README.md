@@ -127,6 +127,8 @@ The most important ones are:
 |:------|:-----------:|:----------------------:| :--------------:|
 | [GritLM-7B](https://huggingface.co/GritLM/gritlm-7b) | 7B parameter model that uses bidirectional attention for embedding and causal attention for generation. It is finetuned from Mistral-7B | 66.8 | 55.5 |
 | [GritLM-8x7B](https://huggingface.co/GritLM/gritlm-8x7b) | 7B parameter model that uses bidirectional attention for embedding and causal attention for generation. It is finetuned from Mistral-8x7B | 65.7 | 65.7 |
+| [Generative-only variant](https://hf.co/GritLM/gen_m7_sq2048_tulu2_ep1) | 7B parameter model generative-only equivalent of GritLM-7B. | 41.2 | 55.2 |
+| [Embedding-only variant](https://hf.co/GritLM/emb_m7_nodes16_fast) | 7B parameter model embedding-only equivalent of GritLM-7B. | 66.8 | 7.6 |
 
 For `GritLM-7B` and `GritLM-8x7B`, the folder contains a custom modeling file (`modeling_gritlm*.py`) which adds bidirectional attention via the keyword argument `is_causal`, such that if you load them with `from_pretrained` in transformers, it is automatically available. We did not add this for any other models uploaded to the organization, thus for those, you need to either add it yourself or simply replace the `modeling_mistral.py` & `modeling_mixtral.py` files in your transformers installation with `scripts/modeling_mistral_gritlm.py` & `scripts/modeling_mixtral_gritlm.py`. Note that for models that do not use bidirectional attention or when you do not intend to use the bidirectional attention (e.g. for generation), you don't need to do anything.
 

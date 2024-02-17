@@ -423,11 +423,11 @@ Number of tensors saved during recomputation: 45
 
 ### Visuals
 
-- Figure 1: https://colab.research.google.com/drive/13MY11ZRtkDjBMWYEXoaDF1nxyRxis7o7?usp=sharing & then add in logos via `visuals/performance.drawio` that can be opened with https://app.diagrams.net/, then add blurbs in via `visuals/performance.key` that can be opened in Keynote.
-- Figure 2: https://docs.google.com/drawings/d/1ZAzaX4h2JfJR1ahan0R5nk3Xm17SMquGjhshnBNJOzY/edit?usp=sharing
-- Figure 3: https://docs.google.com/drawings/d/1vaSNvDWy6xBBuC70rI22qdOmymksxqoTYiplGPH22ys/edit?usp=sharing
-- Figure 4: https://docs.google.com/drawings/d/1rv916zpYvBbaS6QxpFP4_6fc4gABcPWc2qZC3NUpz8s/edit?usp=sharing
-- Figure 5/6/7/8: https://colab.research.google.com/drive/13MY11ZRtkDjBMWYEXoaDF1nxyRxis7o7?usp=sharing
+- Figure 1: `visuals/performance.pdf` ; https://colab.research.google.com/drive/13MY11ZRtkDjBMWYEXoaDF1nxyRxis7o7?usp=sharing & then add in logos via `visuals/performance.drawio` that can be opened with https://app.diagrams.net/, then add blurbs in via `visuals/performance.key` that can be opened in Keynote.
+- Figure 2: `visuals/octopus.pdf` ; https://docs.google.com/drawings/d/1ZAzaX4h2JfJR1ahan0R5nk3Xm17SMquGjhshnBNJOzY/edit?usp=sharing
+- Figure 3: `visuals/format.pdf` ; https://docs.google.com/drawings/d/1vaSNvDWy6xBBuC70rI22qdOmymksxqoTYiplGPH22ys/edit?usp=sharing
+- Figure 4: `visuals/rag.pdf` ; https://docs.google.com/drawings/d/1rv916zpYvBbaS6QxpFP4_6fc4gABcPWc2qZC3NUpz8s/edit?usp=sharing
+- Figure 5/6/7/8: `visuals/latency.pdf`/`visuals/loss7.pdf`/`visuals/loss8x7.pdf`/`visuals/embmem.pdf` ; https://colab.research.google.com/drive/13MY11ZRtkDjBMWYEXoaDF1nxyRxis7o7?usp=sharing
 - Other figures & tables are manual, but there are helper scripts, such as `scripts/mteb_to_tex.py`
 
 ### Acknowledgements

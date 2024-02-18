@@ -14,6 +14,7 @@ This repository provides all materials for the paper [Generative Representationa
     - [Embedding](#embedding)
     - [Generative](#generative)
 - [Known issues](#known-issues)
+- [Visuals](#visuals)
 - [Acknowledgements](#acknowledgements)
 - [Citation](#citation)
 

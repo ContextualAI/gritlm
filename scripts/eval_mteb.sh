@@ -113,17 +113,6 @@ STS12
 SummEval
 )
 
-
-ALLDS=(
-SprintDuplicateQuestions
-STS13
-FiQA2018
-SCIDOCS
-)
-
-
-
-
 DS=${ALLDS[$SLURM_ARRAY_TASK_ID]}
 
 echo "Running $DS"
@@ -207,17 +196,6 @@ python evaluation/eval_mteb.py \
 #python /home/niklas/gritlm/evaluation/eval_mteb.py \
 #--model_name_or_path /data/niklas/gritlm/m7_nodes8_rerun \
 #--task_names $DS \
-#--batch_size 64 \
-#--pooling_method mean \
-#--instruction_set e5 \
-#--instruction_format gritlm \
-#--attn bbcc \
-#--attn_implementation sdpa \
-#--dtype bfloat16
-
-#python /home/niklas/gritlm/evaluation/eval_mteb.py \
-#--model_name_or_path /data/niklas/gritlm/m7_nodes8_rerun \
-#--task_names $DS \
 #--batch_size 32 \
 #--pooling_method mean \
 #--instruction_set e5 \
@@ -225,7 +203,6 @@ python evaluation/eval_mteb.py \
 #--attn bbcc \
 #--attn_implementation sdpa \
 #--dtype bfloat16
-
 
 ### MEDI2 ###
 # For 1-shot add `--num_shots 1 \`
@@ -240,19 +217,6 @@ python evaluation/eval_mteb.py \
 #--attn_implementation sdpa \
 #--dtype bfloat16 \
 #--output_folder /home/niklas/gritlm/gritlmresults/gritlm_m7_sq2048_medi2_bbcc
-
-
-### BF16 Save Qrels ###
-#python /home/niklas/gritlm/evaluation/eval_mteb.py \
-#--model_name_or_path /data/niklas/gritlm/gritlm_m7_sq2048_e5ds_bbcc_bs2048_token_nodes16 \
-#--task_names $DS \
-#--batch_size 64 \
-#--pooling_method mean \
-#--instruction_set e5 \
-#--instruction_format gritlm \
-#--attn bbcc \
-#--attn_implementation sdpa \
-#--dtype bfloat16
 
 ### Llama 70B ###
 #python evaluation/eval_mteb.py \

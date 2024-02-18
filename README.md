@@ -289,7 +289,7 @@ python -m eval.alpaca_farm.run_eval \
 
 ### Known issues
 
-- If you train on many nodes + a large model + fsdp, you may encounter timeouts upon checkpoint saving with `FULL_STATE_DICT`. For example, training Mixtral on 32 nodes with 8 GPUs each, fails with the below. Usually the main node will finish the saving unless they are all in the same job manager who kills it. Unfortunately increasing the timeout limit seems not possibe? (https://discuss.pytorch.org/t/how-to-set-nccl-timeout-to-infinity/146006 ; https://github.com/huggingface/accelerate/issues/2236#issuecomment-1864809701) So the current solution is just to use less nodes. Please let us know if you have a better solution.
+- If you train on many nodes + a large model + fsdp, you may encounter timeouts upon checkpoint saving with `FULL_STATE_DICT`. For example, training Mixtral on 32 nodes with 8 GPUs each, fails with the below. Usually the main node will finish the saving unless they are all in the same job manager who kills it. Unfortunately increasing the timeout limit seems not possibe? (https://discuss.pytorch.org/t/how-to-set-nccl-timeout-to-infinity/146006 ; https://github.com/huggingface/accelerate/issues/2236#issuecomment-1864809701) So the current solution is just to use less nodes or ensure the saving process does not get killed. Please let us know if you have a better solution.
 ```bash
 [dojo-a3-ghpc-9:1]:  what():  [Rank 1] NCCL watchdog thread terminated with exception: [Rank 1] Watchdog caught collective operation timeout: WorkNCCL(SeqNum=683, OpType=_ALLGATHER_BASE, NumelIn=32768512, NumelOut=262148096, Timeout(ms)=600000) ran for 600032 milliseconds before timing out.
 ```
@@ -341,9 +341,9 @@ NotImplementedError: Cannot copy out of meta tensor; no data!
 536     super().__init__(torch._C.PyTorchFileWriter(self.name))
 537 RuntimeError: Parent directory /data/niklas/gritlm/gritlm_mist_sq2048_medibgetuluv2_tuluformat_8nodes_oldtracc/tmp-checkpoint-500 does not exist.
 ```
-- If loss is slightly different when changing the number of gradient accumulation steps, this is expected because torch uses weighted mean pooling in its CrossEntropyLoss by default. As the language modeling objective occasionally has the same token being predicted multiple times in one batch, this will result in a different loss when splitting up batches. Meanwhile, for the embedding loss every class id is only predicted once, thus weighted mean is equivalent to mean for embedding (https://github.com/pytorch/pytorch/issues/72047; https://github.com/pytorch/pytorch/issues/40560; https://github.com/pytorch/pytorch/issues/107680).
+- If loss is slightly different when changing the number of gradient accumulation steps, this is expected because torch uses weighted mean averaging in its CrossEntropyLoss by default. As the language modeling objective occasionally has the same token being predicted multiple times in one batch, this will result in a different loss when splitting up batches. Meanwhile, for the embedding loss every class id is only predicted once, thus weighted mean is equivalent to mean for embedding (https://github.com/pytorch/pytorch/issues/72047; https://github.com/pytorch/pytorch/issues/40560; https://github.com/pytorch/pytorch/issues/107680).
 - Another reason loss is different when changing the number of processes is that the data order may be different. While all seeds are being set, accelerate.prepare of the data loader in the trainer, sets up the dataloader such that it iterates one sample ahead of time. Thus, on the first iteration it gets two batches for each process instead of one. Somehow, this causes one sample in the first batch to land in the subsequent batch when going from 0 to 8 gpus. I could not figure out why exactly, but investigations are appreciated.
-- Training with fp32 generally converges much faster than with bf16. Changing the allreduce and buffer dtypes to fp32 does not change this (https://github.com/NVIDIA/Megatron-LM/issues/502; https://github.com/pytorch/pytorch/issues/106395)
+- Training with fp32 generally converges much faster than with bf16. Changing the allreduce and buffer dtypes to fp32 does not change this (https://github.com/NVIDIA/Megatron-LM/issues/502; https://github.com/pytorch/pytorch/issues/106395). However, in the ablations of the paper it actually did not perform better to do fully fp32.
 - torch.compile fails with the below in unified mode (also see https://github.com/pytorch/pytorch/issues/111317):
 ```bash
 from user code:                                                                              
@@ -396,7 +396,6 @@ torch._dynamo.exc.InternalTorchDynamoError: attempting to assign a gradient of s
 0]' to a tensor of size '[218112000]'. Please ensure that the gradient and the tensor are the
  same size
 ```
-- If using `fsdp_state_dict_type: FULL_STATE_DICT` in the config with many nodes, it may time out upon checkpointing. E.g. for 32 nodes with Mistral-7B in fp32 it timed out for me.
 - DeepSpeed + FlashAttention2 + Optim & Params offloaded to CPU + DeepSpeed ZeRo3 init fails:
 ```bash
 s. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400412039/work/torch/csrc/t

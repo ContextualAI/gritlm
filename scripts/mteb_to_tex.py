@@ -149,10 +149,9 @@ TASK_LIST_NAMES = [
 ]
 
 MODELS = [
-    "gen_m7_sq2048_tulu2_ep1",
-    "emb_m7_nodes16_fast",
-    "GritLM-8x7B",
-    "GritLM-7B",
+    "v5-Eagle-7B-HF",
+    "Llama-2-7b-hf",
+    "gpt-j-6b",
 ]
 
 MODEL_TO_NAME = {
@@ -258,7 +257,7 @@ def get_table(models, task_list, limit_langs=[], skip_langs=[], name="table", no
     scores_all = []
     for ds in task_list:
         try:
-            results =  [get_rows(dataset=ds, model_name=model, limit_langs=limit_langs, skip_langs=skip_langs) for model in models]
+            results = [get_rows(dataset=ds, model_name=model, limit_langs=limit_langs, skip_langs=skip_langs) for model in models]
             assert all(len(sub) == len(results[0]) for sub in results)
             for lang_idx in range(len(results[0])):
                 scores = [x[lang_idx][-1] for x in results]

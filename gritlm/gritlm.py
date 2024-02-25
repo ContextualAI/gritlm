@@ -17,6 +17,7 @@ class GritLM(torch.nn.Module):
         is_inference: bool = True,
         embed_eos: str = "",
         attn: str = 'bbcc',
+        second_to_last_hidden: bool = False,
         **kwargs, # Passed to the model, e.g. `attn_implementation`, `torch_dtype` etc.
     ) -> None:
         super().__init__()
@@ -36,6 +37,8 @@ class GritLM(torch.nn.Module):
                 self.embedding_attr = 'model'
             elif hasattr(self.model, 'transformer'): # GPT-Neo & GPT-J
                 self.embedding_attr = 'transformer'
+            elif hasattr(self.model, 'rwkv'): # RWKV
+                self.embedding_attr = 'rwkv'
             else: 
                 raise ValueError("Could not find attribute to use for embedding: ", self.model)
 
@@ -46,6 +49,7 @@ class GritLM(torch.nn.Module):
         ) if projection is not None else None
         self.normalized = normalized
         self.pooling_method = pooling_method
+        self.second_to_last_hidden = second_to_last_hidden
 
         self.device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
         self.num_gpus = 1
@@ -58,7 +62,7 @@ class GritLM(torch.nn.Module):
 
         if is_inference:
             # Padding side right is necessary for `embed_instruction` to index correctly
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, padding_side='right')
+            self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, padding_side='right', trust_remote_code=True)
             if not(self.tokenizer.pad_token) and self.tokenizer.eos_token:
                 self.tokenizer.pad_token = self.tokenizer.eos_token
                 print('Set pad token to eos token: ' + self.tokenizer.pad_token)        
@@ -127,13 +131,24 @@ class GritLM(torch.nn.Module):
             ).to(self.device)
 
             if (self.attn is not None) and (self.attn[:2] == 'bb'):
-                inputs["is_causal"] = False
+                if "olmo" in self.model.config.model_type.lower():
+                    from transformers.modeling_attn_mask_utils import _prepare_4d_attention_mask_for_sdpa
+                    inputs["attention_bias"] = _prepare_4d_attention_mask_for_sdpa(
+                        inputs["attention_mask"], inputs["input_ids"].dtype
+                    )
+                else:
+                    inputs["is_causal"] = False
             if get_cache:
                 inputs['use_cache'] = True
+            if self.second_to_last_hidden:
+                inputs['output_hidden_states'] = True
             outputs = (
                 getattr(self.model, self.embedding_attr) if self.embedding_attr else self.model
             )(**inputs)
-            last_hidden_state = outputs[0]
+            if self.second_to_last_hidden:
+                last_hidden_state = outputs.hidden_states[-2]
+            else:
+                last_hidden_state = outputs[0]
             if get_cache:
                 # Tuple of `tuple(torch.FloatTensor)` of length `config.n_layers`, with each tuple having 2 tensors of shape `(batch_size, num_heads, sequence_length, embed_size_per_head)`
                 assert len(all_kv_caches) == 0, "Can only get cache for one batch at a time"
@@ -169,9 +184,6 @@ class GritLM(torch.nn.Module):
         if input_was_string:
             all_embeddings = all_embeddings[0]
         if get_cache:
-            # all_kv_caches = (
-            #     torch.stack(all_kv_caches, dim=0) if convert_to_tensor else np.concatenate(all_kv_caches, axis=0)
-            # )
             return all_embeddings, all_kv_caches
         return all_embeddings
 

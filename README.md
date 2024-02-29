@@ -341,8 +341,8 @@ torchrun --nproc_per_node 1 \
 --query_max_len 32 \
 --passage_max_len 128 \
 --train_group_size 2 \
---negatives_cross_device \
---mode embedding
+--mode embedding \
+--attn cccc
 ```
 
 **Generative model**
@@ -358,7 +358,8 @@ torchrun --nproc_per_node 1 \
 --per_device_train_batch_size 2 \
 --dataloader_drop_last True \
 --passage_max_len 128 \
---mode generative
+--mode generative \
+--attn cccc
 ```
 
 **Unified model (GRIT)**
@@ -378,11 +379,11 @@ torchrun --nproc_per_node 1 \
 --query_max_len 32 \
 --passage_max_len 128 \
 --train_group_size 2 \
---negatives_cross_device \
---mode unified
+--mode unified \
+--attn cccc
 ```
 
-All arguments are explained in `training/arguments.py` or the [HF TrainingArguments documentation](https://hf.co/docs/transformers/main/en/main_classes/trainer#transformers.TrainingArguments) except for `nproc_per_node` which is the number of GPUs per node. For our actual training runs, we use accelerate to easily use multiple nodes and GPUs. The scripts are all in `scripts/training`, for example `scripts/training/train_gritlm_8x7b.sh` was used for GritLM-8x7B. For models from the ablations, you can check their folder on the huggingface hub which contains a `training_args.bin` file with the arguments. You can also check all their arguments on the WandB: https://wandb.ai/muennighoff/gritlm.
+All arguments are explained in `training/arguments.py` or the [HF TrainingArguments documentation](https://hf.co/docs/transformers/main/en/main_classes/trainer#transformers.TrainingArguments) except for `nproc_per_node` which is the number of GPUs per node. For our actual training runs, we use accelerate to easily use multiple nodes and GPUs as well as slightly different settings (e.g. `--attn bbcc`). The scripts are all in `scripts/training`, for example `scripts/training/train_gritlm_8x7b.sh` was used for GritLM-8x7B. For models from the ablations, you can check their folder on the huggingface hub which contains a `training_args.bin` file with the arguments. You can also check all their arguments on the WandB: https://wandb.ai/muennighoff/gritlm.
 
 ### Evaluation
 

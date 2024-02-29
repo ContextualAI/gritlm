@@ -161,9 +161,7 @@ def main():
                     samples = num_samples[file.split("/")[-1]]
                     if tmp_ds_len > samples:                    
                         tmp_ds = tmp_ds.select(random.sample(list(range(tmp_ds_len)), samples))
-                
-                ds_name_to_samples[file.split("/")[-1]] = len(tmp_ds)
-            else: raise NotImplementedError
+            ds_name_to_samples[file.split("/")[-1]] = len(tmp_ds)
             train_ds.append(tmp_ds)
             continue
         if training_args.mode in ["unified", "generative"] and "text" in tmp_ds.features:

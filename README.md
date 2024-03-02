@@ -320,7 +320,7 @@ git clone https://github.com/ContextualAI/gritlm`
 cd gritlm
 pip install -e .
 cd gritlm
-````
+```
 
 Below are easy examples for getting started:
 

@@ -1,8 +1,8 @@
-## GRIT
+## Generative Representational Instruction Tuning
 
 ![](visuals/octopus.jpg)
 
-This repository provides all materials for the paper [Generative Representational Instruction Tuning](https://arxiv.org/abs/2402.09906). We continue developing the repository and welcome any contributions. If you want to use the code in the exact same way as in the paper, please use the 1.0.0 release at commit hash `3ac39052ef878371a658a060e69f9c0124bfd59b`.
+This repository provides all materials for the paper [Generative Representational Instruction Tuning](https://arxiv.org/abs/2402.09906). We continue developing the repository and welcome any contributions. If you want to use the code in the exact same way as in the paper, please use the 1.0.0 release (commit hash = `3ac39052ef878371a658a060e69f9c0124bfd59b`).
 
 - [Inference](#inference)
     - [Basic](#basic)
@@ -590,6 +590,8 @@ The code is inspired by:
 - https://github.com/Muennighoff/sgpt
 - https://github.com/FlagOpen/FlagEmbedding
 - https://github.com/embeddings-benchmark/mteb
+
+Please see additional acknowledgments in the paper.
 
 ### Citation
 

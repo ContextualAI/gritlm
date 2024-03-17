@@ -63,7 +63,7 @@ setup(
         'transformers>=4.37.2',
         'datasets>=2.16.1',
         'wandb',
-        'mteb[beir]'
+        'mteb'
     ],
     classifiers=[
         "Development Status :: 4 - Beta",

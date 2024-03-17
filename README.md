@@ -316,6 +316,7 @@ They are explained in more detail in the paper and its appendix. So to e.g. trai
 
 Setup:
 ```bash
+# First install PyTorch (https://pytorch.org/get-started/locally/; we used torch==2.2.0), then do the below
 git clone https://github.com/ContextualAI/gritlm`
 cd gritlm
 pip install -e .

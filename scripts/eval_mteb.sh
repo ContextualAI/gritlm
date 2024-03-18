@@ -17,7 +17,7 @@
 ######################
 cd /home/niklas/gritlm
 source /env/bin/start-ctx-user
-conda activate gritlmt2
+conda activate gritkto
 export WANDB_PROJECT="gritlm"
 ######################
 
@@ -118,66 +118,62 @@ DS=${ALLDS[$SLURM_ARRAY_TASK_ID]}
 echo "Running $DS"
 
 ### M8X7 ###
-python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/m8x7_nodes32_400_fast \
---instruction_set e5 \
---instruction_format gritlm \
---task_names $DS \
---batch_size 64 \
---pipeline_parallel \
---attn_implementation sdpa \
---pooling_method mean
 
 python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/m8x7_nodes32_400_fast \
---instruction_set e5 \
---instruction_format gritlm \
+--model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
+--no_instruction \
 --task_names $DS \
 --batch_size 32 \
---pipeline_parallel \
---attn_implementation sdpa \
---pooling_method mean
+--pooling_method weightedmean \
+--second_to_last_hidden \
+--output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
 
 python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/m8x7_nodes32_400_fast \
---instruction_set e5 \
---instruction_format gritlm \
+--model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
+--no_instruction \
 --task_names $DS \
 --batch_size 16 \
---pipeline_parallel \
---attn_implementation sdpa \
---pooling_method mean
+--pooling_method weightedmean \
+--second_to_last_hidden \
+--output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
 
 python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/m8x7_nodes32_400_fast \
---instruction_set e5 \
---instruction_format gritlm \
+--model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
+--no_instruction \
 --task_names $DS \
 --batch_size 8 \
---pipeline_parallel \
---attn_implementation sdpa \
---pooling_method mean
+--pooling_method weightedmean \
+--second_to_last_hidden \
+--output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
 
 python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/m8x7_nodes32_400_fast \
---instruction_set e5 \
---instruction_format gritlm \
+--model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
+--no_instruction \
 --task_names $DS \
 --batch_size 4 \
---pipeline_parallel \
---attn_implementation sdpa \
---pooling_method mean
+--pooling_method weightedmean \
+--second_to_last_hidden \
+--output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
+
+python evaluation/eval_mteb.py \
+--model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
+--no_instruction \
+--task_names $DS \
+--batch_size 2 \
+--pooling_method weightedmean \
+--second_to_last_hidden \
+--output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
 
 
 python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/m8x7_nodes32_400_fast \
---instruction_set e5 \
---instruction_format gritlm \
+--model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
+--no_instruction \
 --task_names $DS \
---batch_size 2 \
---pipeline_parallel \
---attn_implementation sdpa \
---pooling_method mean
+--batch_size 1 \
+--pooling_method weightedmean \
+--second_to_last_hidden \
+--output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
+
 
 ### FP32 ###
 #python /home/niklas/gritlm/evaluation/eval_mteb.py \

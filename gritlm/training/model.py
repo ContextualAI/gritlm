@@ -126,8 +126,9 @@ class GritLMTrainModel(GritLM):
             self.gen_add_kwargs["loss_gen_factor"] = loss_gen_factor
             self.gen_add_kwargs["output_router_logits"] = True
         else:
+            vocab_size = getattr(self.model.config, "embedding_size", self.model.config.vocab_size)
             self.gen_loss_fn = NextTokenLoss(
-                self.model.config.vocab_size, loss_gen_type, loss_gen_factor
+                vocab_size, loss_gen_type, loss_gen_factor
             )
         self.config = self.model.config # Required for accelerate DeepSpeed integration
 
@@ -141,7 +142,15 @@ class GritLMTrainModel(GritLM):
         if self.attn[:2] == 'cb':
             kwargs['instruction_lens'] = instruction_lens
         elif self.attn[:2] == 'bb':
-            kwargs['is_causal'] = False
+            if "olmo" in self.model.config.model_type.lower():
+                from transformers.modeling_attn_mask_utils import _prepare_4d_attention_mask_for_sdpa
+                assert kwargs["attention_mask"] is not None, "Attention mask is required for bb"
+                kwargs["attention_bias"] = _prepare_4d_attention_mask_for_sdpa(
+                    kwargs["attention_mask"], torch.float32
+                )
+                torch.save(kwargs["attention_bias"], "attention_bias.pt")
+            else:
+                kwargs["is_causal"] = False
         out = (getattr(self.model, self.embedding_attr) if self.embedding_attr else self.model)(**kwargs)[0]
 
         if self.projection is not None:

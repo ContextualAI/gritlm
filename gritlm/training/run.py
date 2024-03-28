@@ -273,7 +273,6 @@ def main():
         # https://github.com/texttron/tevatron/blob/2e5d00ee21d5a7db0bd2ea1463c9150a572106d4/examples/repllama/repllama.py#L81
         # https://github.com/allenai/open-instruct/blob/9ebcb582cfc243a6dab75b4302fa432784db26c2/open_instruct/finetune.py#L478
         peft_config = LoraConfig(
-            task_type=TaskType.CAUSAL_LM, 
             inference_mode=False, 
             r=16, 
             lora_alpha=64,

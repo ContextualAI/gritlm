@@ -196,7 +196,7 @@ results_folder = sys.argv[1].rstrip("/")
 
 all_results = {}
 
-mteb_task_names = [t.description["name"] for t in MTEB().tasks] + ["CQADupstackRetrieval"]
+mteb_task_names = [t.metadata.name for t in MTEB().tasks] + ["CQADupstackRetrieval"]
 
 for model_name in os.listdir(results_folder):
     model_res_folder = os.path.join(results_folder, model_name)
@@ -217,7 +217,7 @@ def get_rows(dataset, model_name, limit_langs=[], skip_langs=[]):
     # CQADupstackRetrieval uses the same metric as its subsets
     tasks = MTEB(tasks=[dataset.replace("CQADupstackRetrieval", "CQADupstackTexRetrieval")]).tasks
     assert len(tasks) == 1, f"Found {len(tasks)} for {dataset}. Expected 1."
-    main_metric = tasks[0].description["main_score"]
+    main_metric = tasks[0].metadata.main_score
     test_result = all_results.get(model_name, {}). get(dataset, {})
 
     # Dev / Val set is used for MSMARCO (See BEIR paper)
@@ -228,7 +228,7 @@ def get_rows(dataset, model_name, limit_langs=[], skip_langs=[]):
     else:
         test_result = test_result.get("test")
 
-    for lang in tasks[0].description["eval_langs"]:
+    for lang in tasks[0].metadata.eval_langs:
         if (limit_langs and lang not in limit_langs) or (skip_langs and lang in skip_langs):
             continue
         elif test_result is None:

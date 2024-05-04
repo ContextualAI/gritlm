@@ -11,6 +11,7 @@ This repository provides all materials for the paper [Generative Representationa
 - [Training](#training)
     - [Data](#data)
     - [Run](#run)
+    - [Alignment](#alignment)
 - [Evaluation](#evaluation)
     - [Embedding](#embedding)
     - [Generative](#generative)
@@ -385,6 +386,10 @@ torchrun --nproc_per_node 1 \
 ```
 
 All arguments are explained in `training/arguments.py` or the [HF TrainingArguments documentation](https://hf.co/docs/transformers/main/en/main_classes/trainer#transformers.TrainingArguments) except for `nproc_per_node` which is the number of GPUs per node. For our actual training runs, we use accelerate to easily use multiple nodes and GPUs as well as slightly different settings (e.g. `--attn bbcc`). The scripts are all in `scripts/training`, for example `scripts/training/train_gritlm_8x7b.sh` was used for GritLM-8x7B. For models from the ablations, you can check their folder on the huggingface hub which contains a `training_args.bin` file with the arguments. You can also check all their arguments on the WandB: https://wandb.ai/muennighoff/gritlm. Also note that if using GradCache, you need to [use the one in this repository](https://github.com/ContextualAI/gritlm/tree/main/gritlm/training/GradCache).
+
+#### Alignment
+
+For the experiments on aligning GritLM with KTO we use https://github.com/huggingface/trl with the scripts in https://github.com/Muennighoff/kto.
 
 ### Evaluation
 

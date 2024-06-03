@@ -65,7 +65,7 @@ class GritLM(torch.nn.Module):
             if self.embed_eos:
                 assert self.embed_eos in self.tokenizer.vocab, f"EOS token {self.embed_eos} not in vocab"
             self.model.eval()
-            if not("device_map" in kwargs) and not("load_in_4bit" in kwargs and kwargs["load_in_4bit"]) and not("load_in_8bit" in kwargs and kwargs["load_in_8bit"]):
+            if not("device_map" in kwargs) and not(kwargs.get("load_in_4bit", False)) and not(kwargs.get("load_in_8bit", False)):
                 self.model.to(self.device)
                 # Parallelize embedding model
                 if mode == 'embedding':

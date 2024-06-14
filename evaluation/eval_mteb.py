@@ -1098,6 +1098,7 @@ def get_args():
     parser.add_argument('--embedding_head', default=None, type=str)
     parser.add_argument('--pooling_method', default='mean', type=str)
     parser.add_argument('--save_qrels', action='store_true')
+    parser.add_argument('--second_to_last_hidden', default='False', action='store_true')    
     parser.add_argument('--top_k', default=10, type=int)    
     return parser.parse_args()
 
@@ -1121,8 +1122,9 @@ if __name__ == '__main__':
         "torch_dtype": DTYPE_TO_TORCH_DTYPE.get(args.dtype, torch.bfloat16),
         "mode": "embedding",
         "pooling_method": args.pooling_method,
-        "attn_implementation": args.attn_implementation,
-        "attn": args.attn,
+        "attn_implementation": None if "v5-Eagle-7B-HF" in args.model_name_or_path else args.attn_implementation,
+        "attn": None if "v5-Eagle-7B-HF" in args.model_name_or_path else args.attn,
+        "second_to_last_hidden": args.second_to_last_hidden,
     }
 
     if args.pipeline_parallel:

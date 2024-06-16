@@ -112,14 +112,15 @@ class GritLM(torch.nn.Module):
         elif isinstance(sentences, dict):
             input_type = "dict"
         elif isinstance(sentences, BatchEncoding):
-            input_type = "output"
+            sentences = dict(sentences)
+            input_type = "dict"
         else:
             input_type = "list"
 
         all_embeddings, all_kv_caches = [], []
         for start_index in tqdm(range(0, len(sentences), batch_size), desc="Batches", disable=len(sentences)<256):
-            sentences_batch = sentences[start_index:start_index + batch_size]
             if input_type == "list" or input_type == "string":
+                sentences_batch = sentences[start_index:start_index + batch_size]
                 sentences_batch = [
                     instruction + s + self.embed_eos for s in sentences_batch
                 ]
@@ -132,9 +133,8 @@ class GritLM(torch.nn.Module):
                     max_length=max_length,
                     add_special_tokens=add_special_tokens,
                 ).to(self.device)
-            elif input_type == "output":
-                inputs = sentences_batch.to(self.device)
             elif input_type == "dict":
+                inputs = {k: v[start_index:start_index + batch_size] for k,v in sentences.items() if isinstance(v, torch.Tensor)}
                 inputs = {k: v.to(self.device) for k,v in inputs.items() if isinstance(v, torch.Tensor)}
 
             if (self.attn is not None) and (self.attn[:2] == 'bb'):

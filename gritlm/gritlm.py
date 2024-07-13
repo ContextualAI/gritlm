@@ -17,6 +17,7 @@ class GritLM(torch.nn.Module):
         is_inference: bool = True,
         embed_eos: str = "",
         attn: str = 'bbcc',
+        device: str = "cuda" if torch.cuda.is_available() else "cpu",
         **kwargs, # Passed to the model, e.g. `attn_implementation`, `torch_dtype` etc.
     ) -> None:
         super().__init__()
@@ -46,8 +47,7 @@ class GritLM(torch.nn.Module):
         ) if projection is not None else None
         self.normalized = normalized
         self.pooling_method = pooling_method
-
-        self.device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+        self.device = device
         self.num_gpus = 1
         self.embed_eos = embed_eos
         self.attn = attn
@@ -67,8 +67,8 @@ class GritLM(torch.nn.Module):
             self.model.eval()
             if not("device_map" in kwargs) and not(kwargs.get("load_in_4bit", False)) and not(kwargs.get("load_in_8bit", False)):
                 self.model.to(self.device)
-                # Parallelize embedding model
-                if mode == 'embedding':
+                # Parallelize embedding model unless a specific device is specified, e.g. `cuda:1`
+                if (mode == 'embedding') and ((isinstance(self.device, str) is False) or (":" not in self.device)):
                     self.num_gpus = torch.cuda.device_count()
                     if self.num_gpus > 1:
                         print(f"----------Using {self.num_gpus} data-parallel GPUs----------")

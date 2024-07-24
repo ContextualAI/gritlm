@@ -121,6 +121,38 @@ SET_TO_TASK_TO_DS_TO_PROMPT = {
                 'query': 'Given a query on COVID-19, retrieve documents that answer the query',
                 'corpus': '',
             },
+            'LegalSummarization': {
+                'query': 'Given legal terms, retrieve a passage with more details about the legal terms',
+                'corpus': '',
+            },
+            'LegalBenchConsumerContractsQA': {
+                'query': 'Given a legal query by a consumer, retrieve relevant legal passages of contracts that answer the query',
+                'corpus': '',
+            },
+            'LegalBenchCorporateLobbying': {
+                'query': 'Given a one-sentence summary of a legal article, retrieve the legal article',
+                'corpus': '',
+            },
+            'AILACasedocs': {
+                'query': 'Given a legal scenario, retrieve the most relevant case document',
+                'corpus': '',
+            },
+            'AILAStatutes': {
+                'query': 'Given a legal situation, retrieve the most relevant statute',
+                'corpus': '',
+            },
+            'LeCaRDv2': {
+                'query': 'Given a legal scenario, retrieve the document that best matches or is most relevant to it',
+                'corpus': '',
+            },
+            'LegalQuAD': {
+                'query': 'Given a legal question in German, retrieve the most relevant legal document in German',
+                'corpus': '',
+            },
+            'GerDaLIRSmall': {
+                'query': 'Given a legal passage in German, retrieve the most relevant legal document in German',
+                'corpus': '',
+            },
         },
         'STS': {
             'STS12': "Retrieve semantically similar text.",
@@ -1098,7 +1130,7 @@ def get_args():
     parser.add_argument('--embedding_head', default=None, type=str)
     parser.add_argument('--pooling_method', default='mean', type=str)
     parser.add_argument('--save_qrels', action='store_true')
-    parser.add_argument('--second_to_last_hidden', default='False', action='store_true')    
+    parser.add_argument('--second_to_last_hidden', action='store_true')    
     parser.add_argument('--top_k', default=10, type=int)    
     return parser.parse_args()
 
@@ -1122,8 +1154,8 @@ if __name__ == '__main__':
         "torch_dtype": DTYPE_TO_TORCH_DTYPE.get(args.dtype, torch.bfloat16),
         "mode": "embedding",
         "pooling_method": args.pooling_method,
-        "attn_implementation": None if "v5-Eagle-7B-HF" in args.model_name_or_path else args.attn_implementation,
-        "attn": None if "v5-Eagle-7B-HF" in args.model_name_or_path else args.attn,
+        "attn_implementation": None if any(x in args.model_name_or_path.lower() for x in ["v5-Eagle-7B-HF", "rwkv"]) else args.attn_implementation,
+        "attn": None if any(x in args.model_name_or_path.lower() for x in ["v5-Eagle-7B-HF", "rwkv"]) else args.attn,
         "second_to_last_hidden": args.second_to_last_hidden,
     }
 
@@ -1137,7 +1169,7 @@ if __name__ == '__main__':
     elif any([x in args.model_name_or_path for x in ["bge"]]):
         assert kwargs["pooling_method"] == "cls"
     
-    if args.pooling_method == "lasttoken":
+    if (args.pooling_method == "lasttoken") and ("v5-Eagle-7B-HF" not in args.model_name_or_path):
         kwargs["embed_eos"] = "</e>"
     if args.embedding_head:
         kwargs["projection"] = args.embedding_head
@@ -1161,7 +1193,7 @@ if __name__ == '__main__':
         kwargs["tasks"] = args.task_names.split(",")
     elif args.task_types:
         kwargs["task_types"] = args.task_types.split(",")
-    tasks = [(t.description["name"], t.description["type"]) for t in MTEB(**kwargs).tasks]
+    tasks = [(t.metadata.name, t.metadata.type) for t in MTEB(**kwargs).tasks]
     
     if args.max_length is not None:
         model.encode = partial(model.encode, max_length=args.max_length)

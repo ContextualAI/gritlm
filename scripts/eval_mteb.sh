@@ -4,11 +4,11 @@
 #SBATCH --ntasks-per-node=1          # crucial - only 1 task per dist per node!
 #SBATCH --hint=nomultithread         # we get physical cores not logical
 #SBATCH --partition=a3
-#SBATCH --gres=gpu:8                 # number of gpus
-#SBATCH --time 99:00:00             # maximum execution time (HH:MM:SS)
+#SBATCH --gres=gpu:1                # number of gpus
+#SBATCH --time 199:00:00             # maximum execution time (HH:MM:SS)
 #SBATCH --output=/data/niklas/jobs/%x-%j.out           # output file name
 #SBATCH --exclusive
-#SBATCH --array=0-68%69
+#SBATCH --array=0-7%8
 
 # FEWSHOT: 0-9%10
 
@@ -17,8 +17,10 @@
 ######################
 cd /home/niklas/gritlm
 source /env/bin/start-ctx-user
+#conda activate gritkto
 conda activate gritkto
 export WANDB_PROJECT="gritlm"
+export OPENBLAS_NUM_THREADS=1
 ######################
 
 ######################
@@ -97,6 +99,14 @@ TwitterSemEval2015
 TwitterURLCorpus
 )
 
+RETRIEVAL=(
+ArguAna
+NFCorpus
+SCIDOCS
+SciFact
+TRECCOVID
+)
+
 # Dataets for fewshot exps
 FEWSHOT=(
 Banking77Classification
@@ -113,67 +123,51 @@ STS12
 SummEval
 )
 
+ALLDS=(
+LegalSummarization
+LegalBenchConsumerContractsQA
+LegalBenchCorporateLobbying
+AILACasedocs
+AILAStatutes
+LeCaRDv2
+LegalQuAD
+GerDaLIRSmall
+)
+
 DS=${ALLDS[$SLURM_ARRAY_TASK_ID]}
 
 echo "Running $DS"
 
 ### M8X7 ###
+#python evaluation/eval_mteb.py \
+#--model_name_or_path /data/niklas/GritLM-8x7B-KTO-node4/32gpusds_kto_GritLM-8x7B/checkpoint-500 \
+#--instruction_set e5 \
+#--instruction_format gritlm \
+#--task_names $DS \
+#--batch_size 64 \
+#--pipeline_parallel \
+#--attn_implementation sdpa \
+#--pooling_method mean \
+#--output_folder /home/niklas/gritlm/results/GritLM-8x7B-KTO-500
 
 python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
---no_instruction \
+--model_name_or_path GritLM/GritLM-7B \
 --task_names $DS \
 --batch_size 32 \
---pooling_method weightedmean \
---second_to_last_hidden \
---output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
+--instruction_set e5 \
+--instruction_format gritlm \
+--attn bbcc \
+--pooling_method mean \
+--output_folder /home/niklas/gritlm/results/GritLM-7B-Law-Prompts
 
-python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
---no_instruction \
---task_names $DS \
---batch_size 16 \
---pooling_method weightedmean \
---second_to_last_hidden \
---output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
-
-python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
---no_instruction \
---task_names $DS \
---batch_size 8 \
---pooling_method weightedmean \
---second_to_last_hidden \
---output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
-
-python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
---no_instruction \
---task_names $DS \
---batch_size 4 \
---pooling_method weightedmean \
---second_to_last_hidden \
---output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
-
-python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
---no_instruction \
---task_names $DS \
---batch_size 2 \
---pooling_method weightedmean \
---second_to_last_hidden \
---output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
-
-
-python evaluation/eval_mteb.py \
---model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
---no_instruction \
---task_names $DS \
---batch_size 1 \
---pooling_method weightedmean \
---second_to_last_hidden \
---output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-2nd
-
+### Llama 70B ###
+#python evaluation/eval_mteb.py \
+#--model_name_or_path /data/niklas/gritlm/v5-Eagle-7B-HF \
+#--no_instruction \
+#--task_names $DS \
+#--batch_size 32 \
+#--pooling_method meannorm \
+#--output_folder /home/niklas/gritlm/results/v5-Eagle-7B-HF-meannorm
 
 ### FP32 ###
 #python /home/niklas/gritlm/evaluation/eval_mteb.py \

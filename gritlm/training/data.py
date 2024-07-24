@@ -235,6 +235,7 @@ class CustomCollator(DataCollatorWithPadding):
                 max_length=self.query_max_len,
                 return_tensors="pt",
                 add_special_tokens=False, # BOS / EOS is already in the prompt
+                return_token_type_ids=False,
             )
             features["passage"] = self.tokenizer(
                 passage,
@@ -243,7 +244,11 @@ class CustomCollator(DataCollatorWithPadding):
                 max_length=self.passage_max_len,
                 return_tensors="pt",
                 add_special_tokens=False, # BOS / EOS is already in the prompt
+                return_token_type_ids=False,
             )
+            for x in ["input_ids", "attention_mask"]:
+                features["query"][x] = features["query"][x][:, :self.query_max_len]
+                features["passage"][x] = features["passage"][x][:, :self.passage_max_len]
 
         if generative[0] is not None:
             features["generative"] = self.tokenizer(
@@ -253,7 +258,11 @@ class CustomCollator(DataCollatorWithPadding):
                 max_length=self.generative_max_len,
                 return_tensors="pt",
                 add_special_tokens=False, # BOS / EOS is already in the prompt
+                return_token_type_ids=False,
             )
+            features["generative"]["input_ids"] = features["generative"]["input_ids"][:, :self.generative_max_len]
+            features["generative"]["attention_mask"] = features["generative"]["attention_mask"][:, :self.generative_max_len]
+            
             features["generative"]["labels"] = features["generative"]["input_ids"].clone()
             # Do not mask out the first token as it is always something & could be the pad token id (bos)
             features["generative"]["labels"][:,1:][features["generative"]["labels"][:,1:] == self.tokenizer.pad_token_id] = -100

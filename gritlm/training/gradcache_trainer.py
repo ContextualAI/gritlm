@@ -715,6 +715,7 @@ class GradCacheTrainer(Trainer):
 
                     elif self.mode == 'generative':
                         tr_loss_step = loss_gen
+                    exit()
                     ### MODIFIED END ###
 
                 if (

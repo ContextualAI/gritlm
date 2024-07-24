@@ -1,7 +1,8 @@
 #!/bin/bash
 CKPT=$1
 # Make out be the last string after /
-OUT=results/${CKPT##*/}
+OUT=/home/niklas/gritlm/results/GritLM-8x7B-KTO-500
+#${CKPT##*/}
 mkdir -p $OUT
 
 DATADIR=/data/niklas/gritlm/evaldata/eval
@@ -10,10 +11,11 @@ FORMAT=eval.templates.create_prompt_with_gritlm_chat_format
 #FORMAT=eval.templates.create_prompt_with_mistral_chat_format
 #FORMAT=eval.templates.create_prompt_with_halo_chat_format
 # Set to 8 for Mixtral
-TP=1
+TP=8
 
 pwd=$(pwd)
-cd open-instruct
+
+cd /home/niklas/gritlm/open-instruct
 
 python -m eval.gsm.run_eval \
 --data_dir $DATADIR/gsm \
@@ -81,7 +83,7 @@ if [ $TP -eq 8 ]; then
     --save_generations \
     --prompt tulu
 else
-    accelerate launch --config_file /home/niklas/gritlm/scripts/configs/confnew/config_1gpusfsdp_m7.yml main.py \
+    accelerate launch --config_file /home/niklas/gritlm/scripts/configs/config_1gpusfsdp_m7.yml main.py \
     --model $CKPT \
     --tasks humanevalsynthesize-python \
     --do_sample True \

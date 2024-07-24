@@ -18,6 +18,7 @@ class GritLM(torch.nn.Module):
         embed_eos: str = "",
         attn: str = 'bbcc',
         second_to_last_hidden: bool = False,
+        device: str = "cuda" if torch.cuda.is_available() else "cpu",
         **kwargs, # Passed to the model, e.g. `attn_implementation`, `torch_dtype` etc.
     ) -> None:
         super().__init__()
@@ -50,8 +51,7 @@ class GritLM(torch.nn.Module):
         self.normalized = normalized
         self.pooling_method = pooling_method
         self.second_to_last_hidden = second_to_last_hidden
-
-        self.device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+        self.device = device
         self.num_gpus = 1
         self.embed_eos = embed_eos
         self.attn = attn
@@ -71,8 +71,8 @@ class GritLM(torch.nn.Module):
             self.model.eval()
             if not("device_map" in kwargs):
                 self.model.to(self.device)
-                # Parallelize embedding model
-                if mode == 'embedding':
+                # Parallelize embedding model unless a specific device is specified, e.g. `cuda:1`
+                if (mode == 'embedding') and ((isinstance(self.device, str) is False) or (":" not in self.device)):
                     self.num_gpus = torch.cuda.device_count()
                     if self.num_gpus > 1:
                         print(f"----------Using {self.num_gpus} data-parallel GPUs----------")
@@ -131,7 +131,7 @@ class GritLM(torch.nn.Module):
             ).to(self.device)
 
             if (self.attn is not None) and (self.attn[:2] == 'bb'):
-                if "olmo" in self.model.config.model_type.lower():
+                if (hasattr(self.model, "config")) and ("olmo" in self.model.config.model_type.lower()):
                     from transformers.modeling_attn_mask_utils import _prepare_4d_attention_mask_for_sdpa
                     inputs["attention_bias"] = _prepare_4d_attention_mask_for_sdpa(
                         inputs["attention_mask"], inputs["input_ids"].dtype
@@ -167,6 +167,20 @@ class GritLM(torch.nn.Module):
                 )["input_ids"]
                 inputs['attention_mask'][:, :len(instruction_tokens)] = 0
             embeddings = self.pooling(last_hidden_state, inputs['attention_mask'], recast=recast)
+            # Check if nan
+            if torch.isnan(embeddings).any():
+                print("NaN detected in embeddings")
+                print("Instruction: ", instruction)
+                print("Sentences: ", sentences_batch)
+                print("emb", embeddings)
+                raise ValueError("NaN detected in embeddings")
+            # Check if inf
+            if torch.isinf(embeddings).any():
+                print("Inf detected in embeddings")
+                print("Instruction: ", instruction)
+                print("Sentences: ", sentences_batch)
+                print("emb", embeddings)
+                raise ValueError("Inf detected in embeddings")
             # Normalize can change the dtype (https://discuss.pytorch.org/t/tensor-in-float16-is-transformed-into-float32-after-torch-norm/110891)
             if self.normalized: 
                 in_dtype = embeddings.dtype
@@ -181,6 +195,9 @@ class GritLM(torch.nn.Module):
         all_embeddings = (
             torch.cat(all_embeddings, dim=0) if convert_to_tensor else np.concatenate(all_embeddings, axis=0)
         )
+        # Check if nan
+        #if torch.isnan(all_embeddings).any():
+        #    print("NaN detected in all embeddings")
         if input_was_string:
             all_embeddings = all_embeddings[0]
         if get_cache:
@@ -218,9 +235,11 @@ class GritLM(torch.nn.Module):
             # as some indices (which shouldn't be attended to) may be 0 due to clamp, use mask to ignore them again
             input_mask_expanded = attention_mask.unsqueeze(-1).expand((b, n, d)).float()
             embedding = torch.gather(hidden_state * input_mask_expanded, 1, gather_indices).squeeze(dim=1)
-        elif self.pooling_method in ['mean', 'weightedmean']:
+        elif self.pooling_method in ['mean', 'weightedmean', 'meannorm', 'weightedmeannorm']:
             if self.pooling_method == 'weightedmean':
                 attention_mask *= attention_mask.cumsum(dim=1) # [0,1,1,1,0,0] -> [0,1,2,3,0,0]
+            if self.pooling_method in ('meannorm', 'weightedmeannorm'):
+                hidden_state = torch.nn.functional.normalize(hidden_state, dim=-1)
             s = torch.sum(hidden_state * attention_mask.unsqueeze(-1).float(), dim=1)
             d = attention_mask.sum(dim=1, keepdim=True).float()
             embedding = s / d

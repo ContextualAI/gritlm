@@ -108,10 +108,12 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(
         model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
         padding_side="right", # Has to be right so masking of instruction tokens works correctly
+        trust_remote_code=True,
     )
     config = AutoConfig.from_pretrained(
         model_args.config_name if model_args.config_name else model_args.model_name_or_path,
         num_labels=1,
+        trust_remote_code=True,
     )
     logger.info('Config: %s', config)
     
@@ -147,14 +149,15 @@ def main():
         # Check if has instructions separated such that they will be masked out later
         # If so filter out samples where the instructions are too long else they will all be 0s
         if training_args.mode in ["embedding", "unified"] and "query" in tmp_ds.features:
+            #import pdb; pdb.set_trace()
             if isinstance(tmp_ds[0]['query'], (tuple, list)):
                 logger.info(f"Filtering out embedding samples with too long instructions for {file}")
-                tmp_ds = filter_too_long_instructions(
-                    tokenizer,
-                    tmp_ds,
-                    data_args.query_max_len,
-                    data_args.passage_max_len,
-                )
+                #tmp_ds = filter_too_long_instructions(
+                #    tokenizer,
+                #    tmp_ds,
+                #    data_args.query_max_len,
+                #    data_args.passage_max_len,
+                #)
                 if num_samples:
                     assert file.split("/")[-1] in num_samples, f'Missing num_samples for {file.split("/")[-1]}'
                     tmp_ds_len = len(tmp_ds)
@@ -163,7 +166,6 @@ def main():
                         tmp_ds = tmp_ds.select(random.sample(list(range(tmp_ds_len)), samples))
                 
                 ds_name_to_samples[file.split("/")[-1]] = len(tmp_ds)
-            else: raise NotImplementedError
             train_ds.append(tmp_ds)
             continue
         if training_args.mode in ["unified", "generative"] and "text" in tmp_ds.features:
@@ -171,11 +173,11 @@ def main():
                 logger.info(f"Filtering out generative samples with too long instructions for {file}")
                 # Use passage_max_len, as this is the seq len limit for the entire generative snippet
                 num_proc = max(multiprocessing.cpu_count()-2, 1) if tmp_ds_len > 5000 else 1
-                tmp_ds = tmp_ds.filter(
-                    lambda ex: len(tokenizer.tokenize(USER_BOS + ex["text"][0] + USER_EOS + ASSISTANT_BOS)) < data_args.generative_max_len,
-                    num_proc=num_proc,
-                    load_from_cache_file=True,
-                )
+                #tmp_ds = tmp_ds.filter(
+                #    lambda ex: len(tokenizer.tokenize(USER_BOS + ex["text"][0] + USER_EOS + ASSISTANT_BOS)) < data_args.generative_max_len,
+                #    num_proc=num_proc,
+                #    load_from_cache_file=True,
+                #)
             ds_name_to_samples[file.split("/")[-1]] = len(tmp_ds)
             train_ds.append(tmp_ds)
             continue
@@ -235,7 +237,7 @@ def main():
         mode=training_args.mode,
         projection=model_args.projection,
         attn=model_args.attn,
-        attn_implementation=model_args.attn_implementation,
+        attn_implementation=None,#model_args.attn_implementation,
         torch_dtype=args_to_dtype(training_args),
         loss_gen_type=training_args.loss_gen_type,
         loss_gen_factor=training_args.loss_gen_factor,
@@ -330,6 +332,9 @@ def main():
         trainer.split_emb_full = training_args.split_emb_full
         trainer.emb_p_only = training_args.emb_p_only
         trainer.emb_q_only = training_args.emb_q_only
+    #elif training_args.kto:
+    #    from .gritkto_trainer import KTOTrainer
+    #    trainer = KTOTrainer(**trainer_kwargs)
     else:
         trainer = Trainer(**trainer_kwargs)
 

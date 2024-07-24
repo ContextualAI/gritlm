@@ -94,6 +94,17 @@ TASK_LIST_SUMMARIZATION = [
     "SummEval",
 ]
 
+TASK_LIST_LAW = [
+    "LegalSummarization",
+    "LegalBenchConsumerContractsQA",
+    "LegalBenchCorporateLobbying",
+    "AILACasedocs",
+    "AILAStatutes",
+    "LeCaRDv2",
+    "LegalQuAD",
+    "GerDaLIRSmall",
+]
+
 TASK_LIST = (
     TASK_LIST_BITEXT
     + TASK_LIST_CLASSIFICATION
@@ -150,8 +161,28 @@ TASK_LIST_NAMES = [
 
 MODELS = [
     "v5-Eagle-7B-HF",
+    "v5-Eagle-7B-HF-2nd",
+    "v5-Eagle-7B-HF-2nd-meannorm",
+    "v5-Eagle-7B-HF-meannorm",
+    "v5-Eagle-7B-HF-lasttoken",
     "Llama-2-7b-hf",
     "gpt-j-6b",
+]
+
+MODELS = [
+    "v5-Eagle-7B-HF",
+    "rwkv-4-world-7b",
+]
+
+MODELS = [
+    "GritLM-7B-KTO",
+    "GritLM-8x7B-KTO-250",
+    "GritLM-8x7B-KTO-500",
+]
+
+MODELS = [
+    "GritLM-7B-Law",
+    "GritLM-7B-Law-Prompts",    
 ]
 
 MODEL_TO_NAME = {
@@ -195,7 +226,7 @@ results_folder = sys.argv[1].rstrip("/")
 
 all_results = {}
 
-mteb_task_names = [t.description["name"] for t in MTEB().tasks] + ["CQADupstackRetrieval"]
+mteb_task_names = [t.metadata.name for t in MTEB().tasks] + ["CQADupstackRetrieval"]
 
 for model_name in os.listdir(results_folder):
     model_res_folder = os.path.join(results_folder, model_name)
@@ -216,7 +247,7 @@ def get_rows(dataset, model_name, limit_langs=[], skip_langs=[]):
     # CQADupstackRetrieval uses the same metric as its subsets
     tasks = MTEB(tasks=[dataset.replace("CQADupstackRetrieval", "CQADupstackTexRetrieval")]).tasks
     assert len(tasks) == 1, f"Found {len(tasks)} for {dataset}. Expected 1."
-    main_metric = tasks[0].description["main_score"]
+    main_metric = tasks[0].metadata.main_score
     test_result = all_results.get(model_name, {}). get(dataset, {})
 
     # Dev / Val set is used for MSMARCO (See BEIR paper)
@@ -227,7 +258,7 @@ def get_rows(dataset, model_name, limit_langs=[], skip_langs=[]):
     else:
         test_result = test_result.get("test")
 
-    for lang in tasks[0].description["eval_langs"]:
+    for lang in tasks[0].metadata.eval_langs:
         if (limit_langs and lang not in limit_langs) or (skip_langs and lang in skip_langs):
             continue
         elif test_result is None:
@@ -288,10 +319,11 @@ def get_table(models, task_list, limit_langs=[], skip_langs=[], name="table", no
     with open(f"{name}.txt", "w") as f:
         f.write(TABLE)
 
-get_table(MODELS, TASK_LIST_CLASSIFICATION, limit_langs=["en", "en-en",], name="mteb_clf", no_lang_col=True)
-get_table(MODELS, TASK_LIST_CLUSTERING, limit_langs=["en", "en-en",], name="mteb_clu", no_lang_col=True)
-get_table(MODELS, TASK_LIST_PAIR_CLASSIFICATION, limit_langs=["en", "en-en",], name="mteb_pclf", no_lang_col=True)
-get_table(MODELS, TASK_LIST_RERANKING, limit_langs=["en", "en-en",], name="mteb_rrk", no_lang_col=True)
-get_table(MODELS, TASK_LIST_RETRIEVAL, limit_langs=["en", "en-en",], name="mteb_rtr", no_lang_col=True)
-get_table(MODELS, TASK_LIST_STS, limit_langs=["en", "en-en",], name="mteb_sts", no_lang_col=True)
-get_table(MODELS, TASK_LIST_EN, limit_langs=["en", "en-en",], name="mteb_en", no_lang_col=True)
+get_table(MODELS, TASK_LIST_LAW, name="mteb_law", no_lang_col=True)
+#get_table(MODELS, TASK_LIST_CLASSIFICATION, limit_langs=["en", "en-en",], name="mteb_clf", no_lang_col=True)
+#get_table(MODELS, TASK_LIST_CLUSTERING, limit_langs=["en", "en-en",], name="mteb_clu", no_lang_col=True)
+#get_table(MODELS, TASK_LIST_PAIR_CLASSIFICATION, limit_langs=["en", "en-en",], name="mteb_pclf", no_lang_col=True)
+#get_table(MODELS, TASK_LIST_RERANKING, limit_langs=["en", "en-en",], name="mteb_rrk", no_lang_col=True)
+#get_table(MODELS, TASK_LIST_RETRIEVAL, limit_langs=["en", "en-en",], name="mteb_rtr", no_lang_col=True)
+#get_table(MODELS, TASK_LIST_STS, limit_langs=["en", "en-en",], name="mteb_sts", no_lang_col=True)
+#get_table(MODELS, TASK_LIST_EN, limit_langs=["en", "en-en",], name="mteb_en", no_lang_col=True)

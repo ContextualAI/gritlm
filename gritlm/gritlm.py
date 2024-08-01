@@ -58,7 +58,7 @@ class GritLM(torch.nn.Module):
 
         if is_inference:
             # Padding side right is necessary for `embed_instruction` to index correctly
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, padding_side='right')
+            self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, padding_side='right', trust_remote_code=True)
             if not(self.tokenizer.pad_token) and self.tokenizer.eos_token:
                 self.tokenizer.pad_token = self.tokenizer.eos_token
                 print('Set pad token to eos token: ' + self.tokenizer.pad_token)        

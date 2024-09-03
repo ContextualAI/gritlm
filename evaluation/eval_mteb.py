@@ -1159,7 +1159,7 @@ if __name__ == '__main__':
         kwargs["tasks"] = args.task_names.split(",")
     elif args.task_types:
         kwargs["task_types"] = args.task_types.split(",")
-    tasks = [(t.metadata.name, t.metadata.type) for t in MTEB(**kwargs).tasks
+    tasks = [(t.metadata.name, t.metadata.type) for t in MTEB(**kwargs).tasks]
     
     if args.max_length is not None:
         model.encode = partial(model.encode, max_length=args.max_length)

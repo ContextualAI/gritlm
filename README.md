@@ -2,7 +2,7 @@
 
 ![](visuals/octopus.jpg)
 
-This repository provides all materials for the paper [Generative Representational Instruction Tuning](https://arxiv.org/abs/2402.09906). We continue developing the repository and welcome any contributions. If you want to use the code in the exact same way as in the paper, please use the 1.0.0 release (commit hash = `3ac39052ef878371a658a060e69f9c0124bfd59b`).
+This repository provides all materials for the paper [Generative Representational Instruction Tuning](https://arxiv.org/abs/2402.09906). We continue developing the repository and welcome any contributions. If you want to use the code in the exact same way as in the paper, please use the 1.0.0 release (commit hash = `3ac39052ef878371a658a060e69f9c0124bfd59b`). [63min video](https://www.youtube.com/watch?v=JAaua0jNIdA&t=1748s&pp=ygUuZ2VuZXJhdGl2ZSByZXByZXNlbnRhdGlvbmFsIGluc3RydWN0aW9uIHR1bmluZw%3D%3D) & [30min video](https://www.youtube.com/watch?v=wC7CdhtAMnk) on the paper by Niklas Muennighoff; [60min slides link](https://docs.google.com/presentation/d/1aHwDQaGfy2Dg6r68uRH7kFOuTKka3tzZzEIZIf35VNM/edit?usp=sharing&resourcekey=0-q6APQHTzHtB6jqYa-Snk2g).
 
 - [Inference](#inference)
     - [Basic](#basic)

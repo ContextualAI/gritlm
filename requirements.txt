@@ -1,4 +1,4 @@
-accelerate>=0.26.1
+accelerate>=0.26.1,<1.1.0
 transformers>=4.37.2
 datasets>=2.16.1
 mteb==1.4.0

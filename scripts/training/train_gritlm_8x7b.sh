@@ -41,7 +41,7 @@ LAUNCHER="accelerate launch \
     --main_process_ip "$MASTER_ADDR" \
     --main_process_port $MASTER_PORT \
     --num_processes $WORLD_SIZE \
-    --machine_rank \$SLURM_PROCID \
+    --machine_rank $SLURM_PROCID \
     --role $SLURMD_NODENAME: \
     --rdzv_conf rdzv_backend=c10d \
     --max_restarts 0 \

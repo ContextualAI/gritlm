@@ -130,16 +130,9 @@ class GritLM(torch.nn.Module):
                 inputs["is_causal"] = False
             if get_cache:
                 inputs['use_cache'] = True
-            try:
-                outputs = (
-                    getattr(self.model, self.embedding_attr) if self.embedding_attr else self.model
-                )(**inputs)
-            except TypeError:
-                # Latest transformers release comes with is_causal parameter
-                model = getattr(self.model, self.embedding_attr) if self.embedding_attr else self.model
-                model.is_causal = inputs["is_causal"]
-                del inputs["is_causal"]
-                outputs = model(**inputs)
+            outputs = (
+                getattr(self.model, self.embedding_attr) if self.embedding_attr else self.model
+            )(**inputs)
             last_hidden_state = outputs[0]
             if get_cache:
                 # Tuple of `tuple(torch.FloatTensor)` of length `config.n_layers`, with each tuple having 2 tensors of shape `(batch_size, num_heads, sequence_length, embed_size_per_head)`

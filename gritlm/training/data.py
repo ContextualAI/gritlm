@@ -68,7 +68,7 @@ class CustomDataset(torch.utils.data.Dataset):
                 indices_gen = indices_gen[rank::world_size]
             self.indices_gen = set(indices_gen)
         elif self.len_embedding < self.len_generative:
-            indices_emb = list(range(self.len_generative))
+            indices_emb = list(range(self.len_embedding))
             if torch.distributed.is_initialized():
                 world_size = torch.distributed.get_world_size()
                 rank = torch.distributed.get_rank()

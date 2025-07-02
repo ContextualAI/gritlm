@@ -17,6 +17,17 @@ DTYPE_TO_TORCH_DTYPE = {
     'float16': torch.float16,
 }
 
+
+def serialize_listdocs(ids):
+    ids = pickle.dumps(ids)
+    ids = torch.tensor(list(ids), dtype=torch.uint8).cuda()
+    return ids
+
+
+def deserialize_listdocs(ids):
+    return [pickle.loads(x.cpu().numpy().tobytes()) for x in ids]
+
+
 class DistributedIndex(object):
     def __init__(self, dtype=torch.float32):
         self.embeddings = None
